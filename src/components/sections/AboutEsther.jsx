@@ -34,7 +34,7 @@ export const AboutEsther = () => {
                 <div className="viewfinder relative rounded-3xl overflow-hidden glass-panel border border-brand-border/80 shadow-2xl p-2 bg-brand-muted/30">
                   <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-black/40">
                     <img
-                      src="/img/esther.jpg"
+                      src={`${import.meta.env.BASE_URL}img/esther.jpg`}
                       alt="Esther Dourado Batista — Criadora da MIVLO"
                       className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                     />

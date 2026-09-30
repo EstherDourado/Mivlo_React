@@ -20,7 +20,7 @@ export const Footer = () => {
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-4">
               <img
-                src="/img/LOGO MAIS GROSSINHA 02.png"
+                src={`${import.meta.env.BASE_URL}img/LOGO MAIS GROSSINHA 02.png`}
                 alt="MIVLO Logo"
                 className="h-8 md:h-10 w-auto object-contain transition-transform hover:scale-105"
               />

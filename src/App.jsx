@@ -10,7 +10,7 @@ import { Desenvolvimento } from './pages/Desenvolvimento';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       {/* Reseta a rolagem da página para o topo nas mudanças de rota */}
       <ScrollToTop />
 
