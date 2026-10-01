@@ -77,14 +77,24 @@ export const PortfolioGrid = ({ initialFilter = "Todos", showHeader = true, titl
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#180a30] via-black/30 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
 
-                  {/* Badge de Categoria */}
-                  <div className="absolute top-4 left-4 z-10 flex gap-2">
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-black/60 backdrop-blur-md text-brand-amber border border-brand-amber/30">
+                  {/* Badges de Categoria & Especificidades */}
+                  <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
+                    <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md text-brand-amber border border-brand-amber/30">
                       {project.category}
                     </span>
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-white/10 backdrop-blur-md text-white/80 border border-white/10">
-                      {project.subCategory}
-                    </span>
+                    {project.photoCount ? (
+                      <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 backdrop-blur-md">
+                        {project.photoCount} Fotos do Estande
+                      </span>
+                    ) : project.githubUrl ? (
+                      <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-500/30 backdrop-blur-md">
+                        GitHub Repo
+                      </span>
+                    ) : (
+                      <span className="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-white/10 backdrop-blur-md text-white/80 border border-white/10">
+                        {project.subCategory}
+                      </span>
+                    )}
                   </div>
 
                   {/* Botão Hover Preview */}
@@ -135,6 +145,7 @@ export const PortfolioGrid = ({ initialFilter = "Todos", showHeader = true, titl
         {/* Modal de Detalhes */}
         {selectedProject && (
           <ProjectModal
+            key={selectedProject.id}
             project={selectedProject}
             onClose={() => setSelectedProject(null)}
           />

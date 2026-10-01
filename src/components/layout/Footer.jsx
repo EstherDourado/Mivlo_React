@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { siteConfig } from '../../config/site';
+import { siteConfig, asset } from '../../config/site';
 import { MessageCircle, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 
 const InstagramIcon = ({ className }) => (
@@ -20,7 +20,7 @@ export const Footer = () => {
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-4">
               <img
-                src={`${import.meta.env.BASE_URL}img/LOGO MAIS GROSSINHA 02.png`}
+                src={asset('img/LOGO MAIS GROSSINHA 02.png')}
                 alt="MIVLO Logo"
                 className="h-8 md:h-10 w-auto object-contain transition-transform hover:scale-105"
               />

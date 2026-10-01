@@ -1,3 +1,6 @@
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+export const asset = (path) => `${base}${path.startsWith('/') ? path.slice(1) : path}`;
+
 export const siteConfig = {
   name: "MIVLO",
   tagline: "Sua marca em tela. Sua marca em código.",
@@ -235,124 +238,127 @@ export const siteConfig = {
     },
   ],
 
-  // Portfólio Rico com Dados Reais
+  // Portfólio com Projetos Reais de Desenvolvimento e Eventos Audiovisuais
   portfolio: [
+    // --- DESENVOLVIMENTO WEB ---
     {
-      id: "agromaq-expo",
-      title: "AgroMaq — Cobertura de Estande & Bastidores",
-      category: "Audiovisual",
-      subCategory: "Vídeo",
-      tags: ["Audiovisual", "Vídeo", "Estandes"],
-      summary: "Cobertura completa da montagem até a feira com aftermovie 4K e 4 reels dinâmicos.",
-      coverImage: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
-      client: "AgroMaq Soluções",
-      year: "2025",
-      type: "audiovisual",
-      techs: ["Sony Cinema Line", "Gimbal Ronin", "DaVinci Resolve", "Drone 4K"],
-      description: "Acompanhamos 48 horas de montagem e 4 dias de feira agrícola. Produzimos um vídeo institucional de 2 minutos que foi exibido no painel de LED do próprio estande, além de um acervo com 50 fotos de alta qualidade e 4 Reels de altíssimo engajamento.",
-      metrics: ["+140k visualizações nas redes", "Banco de 60 fotos entregue em 72h", "Material usado para vendas pós-feira"],
-      gallery: [
-        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
-        "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80",
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=80"
-      ]
-    },
-    {
-      id: "lumina-clinica",
-      title: "Lumina Estética — Landing Page de Alta Conversão",
+      id: "donritter",
+      title: "Don Ritter — Pizzaria Artesanal & Delivery",
       category: "Tecnologia",
       subCategory: "Web",
-      tags: ["Tecnologia", "Web", "Landing Page"],
-      summary: "Landing page personalizada para captação de agendamentos com carregamento em 0.8s.",
-      coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
-      client: "Clínica Lumina",
-      year: "2025",
-      type: "web",
-      techs: ["React", "Tailwind CSS", "Vite", "EmailJS", "Meta Pixel"],
-      description: "Desenvolvimento de página de captura de alto impacto visual, integrando agendamento direto com a recepção via WhatsApp com mensagens rastreadas, garantindo taxa de conversão 38% superior à média do segmento médico.",
-      metrics: ["Score 98 no Google Lighthouse", "+38% de conversão de agendamentos", "Tempo de carregamento de 850ms"],
-      liveUrl: "https://mivlo.com.br",
-      gallery: [
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80"
-      ]
-    },
-    {
-      id: "vortice-arquitetura",
-      title: "Vórtice Arquitetura — Fotografia & Catálogo Estrutural",
-      category: "Audiovisual",
-      subCategory: "Fotografia",
-      tags: ["Audiovisual", "Fotografia", "Arquitetura"],
-      summary: "Fotografia arquitetônica refinada de ambientes corporativos e estandes modernos.",
-      coverImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
-      client: "Vórtice Arquitetura Corporativa",
-      year: "2025",
-      type: "audiovisual",
-      techs: ["Lentes Tilt-Shift", "Lightroom Classic", "HDR Fotométrico"],
-      description: "Ensaio fotográfico minucioso destacando texturas, iluminação de marcenaria, linhas retas e fluxo humano em três projetos corporativos de destaque em São Paulo.",
-      metrics: ["32 fotos finais entregues com pós-produção fina", "Utilizado para inscrição em premiação", "Acervo para catálogo impresso e digital"],
-      gallery: [
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
-        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1200&q=80"
-      ]
-    },
-    {
-      id: "synapse-erp",
-      title: "Synapse Hub — Sistema de Gestão & Dashboard Operacional",
-      category: "Tecnologia",
-      subCategory: "Web",
-      tags: ["Tecnologia", "Web", "Sistemas"],
-      summary: "Sistema web customizado para controle financeiro, faturamento e relatórios executivos.",
-      coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
-      client: "Synapse Log",
+      tags: ["Tecnologia", "Web", "Landing Page", "Gastronomia"],
+      summary: "Landing page gastronômica de alta conversão para pizzaria artesanal com cardápio digital estruturado e pedidos rápidos via WhatsApp.",
+      coverImage: asset("img/projects/donritter-banner.png"),
+      client: "Don Ritter Pizzaria (Cascavel/PR)",
       year: "2026",
       type: "web",
-      techs: ["React", "C# .NET", "SQL Server", "Tailwind CSS", "Recharts"],
-      description: "Aplicação web construída sob medida com controle granular de perfis, auditoria de movimentações, emissão de relatórios automatizados em PDF e gráficos interativos de previsão orçamentária.",
-      metrics: ["Redução de 65% no tempo de fechamento mensal", "Integração segura com APIs bancárias", "100% de disponibilidade operacional"],
-      liveUrl: "https://mivlo.com.br",
+      techs: ["HTML5", "Tailwind CSS", "JavaScript", "Phosphor Icons", "WhatsApp API", "UI/UX"],
+      description: "Desenvolvimento de landing page de alta conversão para gastronomia e delivery artesanal em Cascavel/PR. Desenvolvida com paleta dark warm (#16110f, #e65c00), tipografia Bebas Neue + Inter, cardápio interativo com categorias, seção de rodízio e botão direto de pedidos no WhatsApp.",
+      metrics: ["Fluxo de pedidos direto no WhatsApp", "Experiência mobile first para delivery", "Código limpo e carregamento instantâneo"],
+      githubUrl: "https://github.com/EstherDourado/DONRITTER",
+      liveUrl: "https://github.com/EstherDourado/DONRITTER",
       gallery: [
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80"
+        asset("img/projects/donritter-banner.png"),
+        asset("img/projects/donritter-logo.png")
       ]
     },
     {
-      id: "pulse-fest",
-      title: "Pulse Tech Summit — Storymaker & Aftermovie Oficial",
-      category: "Audiovisual",
-      subCategory: "Vídeo",
-      tags: ["Audiovisual", "Vídeo", "Eventos"],
-      summary: "Cobertura ágil com entrega de reels no mesmo dia e filme comemorativo.",
-      coverImage: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80",
-      client: "Pulse Summit",
-      year: "2025",
-      type: "audiovisual",
-      techs: ["Câmeras 4K 120fps", "Edição Mobile & Desktop", "Áudio sem Fio"],
-      description: "Equipe atuando em tempo real com captação, edição rápida e publicação de 12 stories e 3 reels durante as palestras e networking, além da edição de aftermovie cinematográfico de 90 segundos entregue em 48 horas.",
-      metrics: ["Mais de 80 mil interações no Instagram", "Engajamento em tempo real ampliado em 300%", "Gravação de 8 depoimentos de palestrantes"],
-      gallery: [
-        "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80",
-        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80"
-      ]
-    },
-    {
-      id: "artisan-advocacia",
-      title: "Artisan Law — Portal Institucional Corporativo",
+      id: "mw-cenografia",
+      title: "MW Montagem de Estandes & Cenografia Promocional",
       category: "Tecnologia",
       subCategory: "Web",
-      tags: ["Tecnologia", "Web", "Institucional"],
-      summary: "Site institucional sóbrio e elegante com arquitetura multilíngue e SEO focado em B2B.",
-      coverImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
-      client: "Artisan Advocacia",
-      year: "2025",
+      tags: ["Tecnologia", "Web", "Landing Page", "3D / Three.js"],
+      summary: "Landing page corporativa B2B para empresa de montagem de estandes e arquitetura promocional com elementos 3D interativos em Three.js.",
+      coverImage: asset("img/projects/mw-preview.jpg"),
+      client: "MW Cenografia & Estandes",
+      year: "2026",
       type: "web",
-      techs: ["React", "JavaScript", "Tailwind CSS", "Node.js", "Vite"],
-      description: "Portal institucional focado em transmitir credibilidade jurídica internacional, estruturado com seções de áreas de atuação, publicações de artigos, time de sócios e canal seguro de agendamento de consultas.",
-      metrics: ["Ranqueamento na primeira página para 5 palavras-chave", "Tempo de resposta inferior a 600ms", "Design refinado e minimalista"],
-      liveUrl: "https://mivlo.com.br",
+      techs: ["HTML5", "Tailwind CSS", "Three.js 3D", "JavaScript", "Poppins", "SEO B2B"],
+      description: "Landing page institucional para empresa de cenografia e montagem de estandes em feiras e congressos. Conta com renderização 3D interativa em Three.js, apresentação de estandes executados e canal de captação de marcas expositoras.",
+      metrics: ["Renderização 3D interativa com Three.js", "Arquitetura otimizada para geração de leads B2B", "Paleta de cores sofisticada azul e dourado"],
+      githubUrl: "https://github.com/EstherDourado/MW_Landingpage",
+      liveUrl: "https://github.com/EstherDourado/MW_Landingpage",
       gallery: [
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"
+        asset("img/projects/mw-preview.jpg"),
+        asset("img/Adere/20260803_101508.jpg"),
+        asset("img/Irialmag/20260704_084835.jpg")
+      ]
+    },
+
+    // --- AUDIOVISUAL / EVENTOS (PASTAS COM 6 FOTOS REAIS CADA) ---
+    {
+      id: "adere-expo",
+      title: "Adere — Cobertura de Estande & Arquitetura Promocional",
+      category: "Audiovisual",
+      subCategory: "Fotografia",
+      tags: ["Audiovisual", "Fotografia", "Estandes"],
+      summary: "Cobertura fotográfica técnica e imersiva do estande da Adere, destacando iluminação cenográfica, acabamentos e fluxo de público.",
+      coverImage: asset("img/Adere/20260803_101508.jpg"),
+      client: "Adere Fitas Adesivas",
+      year: "2026",
+      type: "audiovisual",
+      eventFolder: "Adere",
+      photoCount: 6,
+      techs: ["Fotografia Técnica", "Lightroom Classic", "Composição Arquitetônica", "4K UHD"],
+      description: "Registro fotográfico detalhado e completo do estande da Adere. Documentamos os ângulos amplos da estrutura, detalhes de marcenaria, iluminação planejada, exposição dos produtos e a presença dinâmica de visitantes e montadores.",
+      metrics: ["Grade completa com 6 fotografias de alta resolução", "Tratamento de cor e iluminação calibrado", "Acervo corporativo para comunicação e vendas"],
+      gallery: [
+        asset("img/Adere/20260803_100903.jpg"),
+        asset("img/Adere/20260803_101256.jpg"),
+        asset("img/Adere/20260803_101508.jpg"),
+        asset("img/Adere/20260803_102842.jpg"),
+        asset("img/Adere/20260803_102902.jpg"),
+        asset("img/Adere/20260803_102959.jpg")
+      ]
+    },
+    {
+      id: "irialmag-expo",
+      title: "Irialmag — Presença Corporativa & Estrutura em Feira",
+      category: "Audiovisual",
+      subCategory: "Fotografia",
+      tags: ["Audiovisual", "Fotografia", "Eventos"],
+      summary: "Registro fotográfico minucioso capturando os detalhes estruturais, sinalização e a dinâmica do estande da Irialmag.",
+      coverImage: asset("img/Irialmag/20260704_084835.jpg"),
+      client: "Irialmag Indústria",
+      year: "2026",
+      type: "audiovisual",
+      eventFolder: "Irialmag",
+      photoCount: 6,
+      techs: ["Fotografia Corporativa", "Linhas Retas & Perspectiva", "Color Grading", "4K UHD"],
+      description: "Cobertura fotográfica da presença da Irialmag no pavilhão de feiras. O foco do ensaio foi valorizar o design do espaço, testeiras luminosas, mobiliário corporativo e o fluxo de reuniões e negócios no estande.",
+      metrics: ["Grade completa com 6 fotografias em alta definição", "Destaque de branding e sinalização de marca", "Banco de imagens para catálogo institucional"],
+      gallery: [
+        asset("img/Irialmag/20260704_084835.jpg"),
+        asset("img/Irialmag/20260704_085022.jpg"),
+        asset("img/Irialmag/20260704_085100.jpg"),
+        asset("img/Irialmag/20260704_085512.jpg"),
+        asset("img/Irialmag/20260704_091201(0).jpg"),
+        asset("img/Irialmag/20260704_094630.jpg")
+      ]
+    },
+    {
+      id: "supriled-expo",
+      title: "Supriled — Iluminação de LED & Estande Tecnológico",
+      category: "Audiovisual",
+      subCategory: "Fotografia",
+      tags: ["Audiovisual", "Fotografia", "Estandes"],
+      summary: "Captação fotográfica cinematográfica da Supriled, enfatizando a fidelidade de iluminação dos LEDs e arquitetura moderna do estande.",
+      coverImage: asset("img/Supriled/20260818_083714.jpg"),
+      client: "Supriled Iluminação",
+      year: "2026",
+      type: "audiovisual",
+      eventFolder: "Supriled",
+      photoCount: 6,
+      techs: ["Fotometria de LED", "Fotografia Indoor / Noturna", "HDR", "Pós-Produção Fina"],
+      description: "Cobertura fotográfica de alta precisão técnica para capturar os módulos e fitas de LED da Supriled com equilíbrio perfeito de temperatura de cor e exposição. Destacamos a ambientação imersiva do estande e a atração de visitantes.",
+      metrics: ["Grade completa com 6 fotografias em alta resolução calibradas", "Calibração precisa de luzes e cores de LED", "Material de alto impacto para catálogo e Instagram"],
+      gallery: [
+        asset("img/Supriled/20260818_074058.jpg"),
+        asset("img/Supriled/20260818_074155.jpg"),
+        asset("img/Supriled/20260818_083714.jpg"),
+        asset("img/Supriled/20260818_083737.jpg"),
+        asset("img/Supriled/20260818_083759.jpg"),
+        asset("img/Supriled/20260818_085824.jpg")
       ]
     }
   ],

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Video, Code2 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { asset } from '../../config/site';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,7 +45,7 @@ export const Header = () => {
         {/* Logo */}
         <Link to="/" onClick={closeMenu} className="flex items-center gap-2 z-50 group">
           <img
-            src={`${import.meta.env.BASE_URL}img/LOGO MAIS GROSSINHA 02.png`}
+            src={asset('img/LOGO MAIS GROSSINHA 02.png')}
             alt="MIVLO Logo"
             className="h-8 md:h-10 w-auto object-contain transition-transform duration-500 hover:scale-105"
           />

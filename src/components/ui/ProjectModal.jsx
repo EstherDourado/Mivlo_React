@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { X, Globe, CheckCircle2, MessageSquare } from 'lucide-react';
+import { X, Globe, CheckCircle2, MessageSquare, ExternalLink, Images } from 'lucide-react';
 import { siteConfig } from '../../config/site';
+
+const GithubIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+  </svg>
+);
 
 export const ProjectModal = ({ project, onClose }) => {
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
@@ -16,7 +22,7 @@ export const ProjectModal = ({ project, onClose }) => {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onClose]);
+  }, [project, onClose]);
 
   if (!project) return null;
 
@@ -25,7 +31,7 @@ export const ProjectModal = ({ project, onClose }) => {
 
   return (
     <div 
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 md:p-6 overflow-y-auto bg-black/80 backdrop-blur-md animate-fadeIn"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 md:p-6 overflow-y-auto bg-black/85 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
     >
       <div 
@@ -56,9 +62,23 @@ export const ProjectModal = ({ project, onClose }) => {
         <div className="p-6 md:p-8 space-y-6">
           {/* Título & Resumo */}
           <div>
-            <h3 className="text-2xl md:text-3xl font-display font-extrabold text-white mb-2">
-              {project.title}
-            </h3>
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
+              <h3 className="text-2xl md:text-3xl font-display font-extrabold text-white">
+                {project.title}
+              </h3>
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-semibold transition-colors border border-white/15"
+                >
+                  <GithubIcon className="w-4 h-4" />
+                  <span>Ver Código no GitHub</span>
+                  <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+                </a>
+              )}
+            </div>
             <p className="text-brand-sand/80 text-sm md:text-base leading-relaxed">
               {project.summary}
             </p>
@@ -66,7 +86,7 @@ export const ProjectModal = ({ project, onClose }) => {
 
           {/* PREVIEW VISUAL: Mockup de Navegador para Web OU Frame de Cinema para Audiovisual */}
           {isWeb ? (
-            /* Mockup de Navegador */
+            /* Mockup de Navegador para Projetos Web */
             <div className="rounded-2xl border border-brand-border/80 overflow-hidden bg-[#0d041c] shadow-2xl">
               {/* Barra do Navegador */}
               <div className="h-10 bg-[#14062a] border-b border-brand-border/60 flex items-center px-4 gap-3">
@@ -75,19 +95,27 @@ export const ProjectModal = ({ project, onClose }) => {
                   <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
                   <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
                 </div>
-                {/* Fake URL Bar */}
-                <div className="flex-1 max-w-md mx-auto bg-black/40 border border-white/5 rounded-lg px-3 py-1 flex items-center gap-2 text-xs text-brand-sand/60 font-mono">
-                  <Globe className="w-3.5 h-3.5 text-brand-amber" />
-                  <span className="truncate">https://{project.id}.mivlo.com.br</span>
-                </div>
+                {/* Fake / Real URL Bar */}
+                <a 
+                  href={project.githubUrl || "#"} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="flex-1 max-w-md mx-auto bg-black/40 hover:bg-black/60 transition-colors border border-white/5 rounded-lg px-3 py-1 flex items-center justify-between text-xs text-brand-sand/70 font-mono"
+                >
+                  <div className="flex items-center gap-2 truncate">
+                    <Globe className="w-3.5 h-3.5 text-brand-amber flex-shrink-0" />
+                    <span className="truncate">{project.githubUrl ? project.githubUrl.replace('https://', '') : `https://${project.id}.mivlo.com.br`}</span>
+                  </div>
+                  <ExternalLink className="w-3 h-3 opacity-60 ml-2 flex-shrink-0" />
+                </a>
               </div>
 
-              {/* Conteúdo / Screenshot do Projeto */}
-              <div className="relative aspect-video max-h-[380px] w-full overflow-hidden bg-black/40">
+              {/* Imagem / Banner do Projeto Web */}
+              <div className="relative aspect-video max-h-[400px] w-full overflow-hidden bg-black/40 flex items-center justify-center p-4">
                 <img
                   src={project.gallery ? project.gallery[activeMediaIndex] : project.coverImage}
                   alt={project.title}
-                  className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                  className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-700 hover:scale-105"
                 />
               </div>
 
@@ -99,65 +127,81 @@ export const ProjectModal = ({ project, onClose }) => {
                     <button
                       key={i}
                       onClick={() => setActiveMediaIndex(i)}
-                      className={`relative w-16 h-10 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 ${
+                      className={`relative w-16 h-10 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 bg-black/60 ${
                         activeMediaIndex === i ? 'border-brand-amber scale-105 shadow-md' : 'border-transparent opacity-60 hover:opacity-100'
                       }`}
                     >
-                      <img src={imgUrl} alt={`Tela ${i + 1}`} className="w-full h-full object-cover" />
+                      <img src={imgUrl} alt={`Tela ${i + 1}`} className="w-full h-full object-contain" />
                     </button>
                   ))}
                 </div>
               )}
             </div>
           ) : (
-            /* Visualizador Audiovisual / Frame de Cinema */
+            /* Visualizador Audiovisual / Frame de Cinema com Foto Ativa */
             <div className="rounded-2xl border border-brand-border/80 overflow-hidden bg-[#0d041c] shadow-2xl relative">
-              <div className="relative aspect-video max-h-[400px] w-full overflow-hidden bg-black">
+              <div className="relative aspect-video max-h-[440px] w-full overflow-hidden bg-black flex items-center justify-center">
                 {/* Viewfinder brackets nos cantos */}
                 <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-brand-amber/80 z-10 pointer-events-none"></div>
                 <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-brand-amber/80 z-10 pointer-events-none"></div>
                 <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-brand-amber/80 z-10 pointer-events-none"></div>
                 <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-brand-amber/80 z-10 pointer-events-none"></div>
 
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 bg-black/70 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/10 flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></div>
                   <span className="text-[10px] font-mono uppercase tracking-widest text-white/90">
-                    MIVLO CINEMA · 4K UHD
+                    EVENTO: {project.eventFolder || project.title.split(' ')[0]} • FOTO {activeMediaIndex + 1} DE {project.gallery?.length || 6}
                   </span>
                 </div>
 
                 <img
                   src={project.gallery ? project.gallery[activeMediaIndex] : project.coverImage}
-                  alt={project.title}
+                  alt={`${project.title} - Foto ${activeMediaIndex + 1}`}
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
 
-              {/* Galeria de Fotos / Takes */}
-              {project.gallery && project.gallery.length > 1 && (
-                <div className="p-3 bg-[#120524] border-t border-brand-border/40 flex items-center gap-2 overflow-x-auto">
-                  <span className="text-[11px] font-mono text-brand-sand/50 mr-2 uppercase">Galeria:</span>
-                  {project.gallery.map((imgUrl, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setActiveMediaIndex(i)}
-                      className={`relative w-16 h-10 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 ${
-                        activeMediaIndex === i ? 'border-brand-amber scale-105 shadow-md' : 'border-transparent opacity-60 hover:opacity-100'
-                      }`}
-                    >
-                      <img src={imgUrl} alt={`Take ${i + 1}`} className="w-full h-full object-cover" />
-                    </button>
-                  ))}
+              {/* Grade de 6 Miniaturas do Evento */}
+              {project.gallery && (
+                <div className="p-4 bg-[#120524] border-t border-brand-border/40">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-mono font-semibold text-brand-amber flex items-center gap-1.5 uppercase">
+                      <Images className="w-3.5 h-3.5" />
+                      Galeria do Evento (6 Fotografias)
+                    </span>
+                    <span className="text-[11px] text-brand-sand/50 font-mono">
+                      Clique em qualquer foto para ampliar
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-6 gap-2">
+                    {project.gallery.map((imgUrl, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActiveMediaIndex(i)}
+                        className={`relative aspect-video rounded-lg overflow-hidden border-2 transition-all ${
+                          activeMediaIndex === i
+                            ? 'border-brand-amber scale-105 shadow-lg shadow-brand-amber/40 ring-2 ring-brand-amber/20'
+                            : 'border-transparent opacity-60 hover:opacity-100 hover:scale-102'
+                        }`}
+                        aria-label={`Ver foto ${i + 1}`}
+                      >
+                        <img src={imgUrl} alt={`Foto ${i + 1}`} className="w-full h-full object-cover" />
+                        <span className="absolute bottom-1 right-1 text-[9px] font-mono bg-black/70 text-white px-1 rounded">
+                          #{i + 1}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
           )}
 
-          {/* Descrição Detalhada */}
+          {/* Descrição Detalhada & Métricas */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-2 space-y-4">
               <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-amber">
-                Sobre a Entrega
+                Sobre o Projeto
               </h4>
               <p className="text-sm md:text-base text-brand-sand/80 font-light leading-relaxed">
                 {project.description}
@@ -186,7 +230,7 @@ export const ProjectModal = ({ project, onClose }) => {
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3 flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  Impacto & Entregáveis
+                  Destaques & Entregáveis
                 </h4>
                 <ul className="space-y-2.5 text-xs text-brand-sand/80">
                   {project.metrics.map((metric, i) => (
@@ -198,8 +242,19 @@ export const ProjectModal = ({ project, onClose }) => {
                 </ul>
               </div>
 
-              {/* CTA dentro do modal */}
-              <div className="pt-5 mt-5 border-t border-white/10">
+              {/* Botões de Ação dentro do Modal */}
+              <div className="pt-5 mt-5 border-t border-white/10 space-y-2.5">
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-2.5 px-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all border border-white/10"
+                  >
+                    <GithubIcon className="w-4 h-4" />
+                    Acessar Repositório
+                  </a>
+                )}
                 <a
                   href={whatsappUrl}
                   target="_blank"
