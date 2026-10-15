@@ -35,7 +35,7 @@ const AUDIOVISUAL_SERVICES = [
     icon: Film,
   },
   {
-    title: 'Cobertura de Estandes',
+    title: 'Cobertura de Eventos',
     desc: 'Acompanhamento especializado desde os montadores até o fluxo de negócios e recepção dos visitantes.',
     icon: Layers,
   },
@@ -150,7 +150,7 @@ export const Audiovisual = () => {
         initialFilter="Audiovisual"
         showHeader={true}
         title="Projetos Audiovisuais Recentes"
-        subtitle="Confira registros de eventos, coberturas de estandes e produções com assinatura MIVLO."
+        subtitle="Confira registros de eventos, coberturas de eventos e produções com assinatura MIVLO."
       />
 
       {/* COMO FUNCIONA AUDIOVISUAL: 6 ETAPAS */}
