@@ -1,7 +1,9 @@
 import React from 'react';
 import { Camera, Film, Sparkles, Video, Play, Layers, Clapperboard, MonitorPlay, MessageCircle, ArrowRight } from 'lucide-react';
 import { Reveal } from '../components/ui/Reveal';
-import { PackagesAudiovisual } from '../components/sections/PackagesAudiovisual';
+import { SEO } from '../components/seo/SEO';
+import { getServiceSchema, getBreadcrumbSchema, getFAQSchema } from '../utils/schema';
+import { OrcamentoSection } from '../components/sections/OrcamentoSection';
 import { PortfolioGrid } from '../components/ui/PortfolioGrid';
 import { MethodologySection } from '../components/sections/MethodologySection';
 import { FAQSection } from '../components/sections/FAQSection';
@@ -54,45 +56,68 @@ const AUDIOVISUAL_SERVICES = [
 export const Audiovisual = () => {
   const whatsappUrl = siteConfig.getWhatsAppLink('audiovisual');
 
+  const audiovisualSchemas = [
+    getServiceSchema('audiovisual'),
+    getBreadcrumbSchema([
+      { name: 'Início', url: '/' },
+      { name: 'Audiovisual', url: '/audiovisual' }
+    ]),
+    // getFAQSchema(siteConfig.faqAudiovisual)
+  ];
+
   return (
-    <div className="pt-24">
+    <div className="pt-20 sm:pt-24 bg-[#08070D] text-white">
+      <SEO
+        title="MIVLO Audiovisual | Fotografia, Videomaker e Cobertura de Eventos"
+        description="Produção audiovisual corporativa com olhar cinematográfico e rigor técnico. Fotografia profissional, vídeos institucionais, cobertura de feiras, estandes e conteúdo dinâmico para redes sociais."
+        keywords="MIVLO audiovisual, fotografia profissional São Paulo, videomaker para feiras, cobertura de estandes, vídeos corporativos, storymaker em tempo real, captação 4K, edição e color grading"
+        canonical={`${siteConfig.siteUrl}/audiovisual`}
+        schema={audiovisualSchemas}
+      />
+
       {/* HERO SECTION AUDIOVISUAL */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="container mx-auto px-6">
+      <section className="relative py-12 sm:py-20 lg:py-28 overflow-hidden bg-gradient-to-b from-[#08070D] via-[#100D18] to-[#08070D]">
+        {/* Luz ambiente roxa */}
+        <div className="absolute top-10 left-1/4 -translate-x-1/2 w-[500px] h-[400px] bg-[#6128C8]/15 blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-[420px] h-[350px] bg-[#9557F5]/10 blur-[130px] rounded-full pointer-events-none" />
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Reveal>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-amber/40 bg-brand-amber/10 backdrop-blur-md mb-6">
-                <Camera className="w-4 h-4 text-brand-amber" />
-                <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-brand-amber">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full border border-[#9557F5]/30 bg-[#100D18]/80 backdrop-blur-md mb-4 sm:mb-6">
+                <Camera className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#9557F5]" />
+                <span className="text-[9px] sm:text-[11px] font-mono font-bold tracking-widest uppercase text-[#9557F5]">
                   MIVLO Media Hub
                 </span>
               </div>
 
-              <h1 className="fluid-h1 font-extrabold text-white mb-6 leading-tight">
+              <h1 className="fluid-h1 font-extrabold text-white mb-3 sm:mb-6 leading-tight tracking-tight">
                 Sua marca merece <br />
-                <span className="text-amber-gradient">ser vista.</span>
+                <span className="bg-gradient-to-r from-white via-[#B99AFF] to-[#9557F5] bg-clip-text text-transparent">
+                  ser vista.
+                </span>
               </h1>
 
-              <p className="text-base md:text-xl text-brand-sand/90 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+              <p className="text-xs sm:text-base md:text-lg text-[#B9B2C5] mb-6 sm:mb-10 max-w-xl mx-auto leading-relaxed font-light px-2 sm:px-0">
                 Fotografia, vídeo e conteúdo audiovisual para transformar projetos, eventos e experiências em histórias que conectam e geram negócios.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 max-w-sm sm:max-w-none mx-auto">
                 <a
-                  href="#pacotes"
-                  className="btn-amber w-full sm:w-auto text-sm md:text-base px-8 py-3.5 shadow-xl shadow-brand-amber/30"
+                  href="#orcamento"
+                  className="btn-purple w-auto min-w-[190px] sm:min-w-0 max-w-full px-5 sm:px-7 py-2.5 sm:py-3.5 text-xs sm:text-sm shadow-xl shadow-[#6128C8]/30 flex items-center justify-center gap-2"
                 >
-                  Ver Pacotes & Preços
-                  <ArrowRight className="w-4 h-4 ml-1" />
+                  <span>Solicitar Orçamento</span>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1" />
                 </a>
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-ghost w-full sm:w-auto text-sm md:text-base px-8 py-3.5 flex items-center justify-center gap-2"
+                  className="btn-ghost w-auto min-w-[190px] sm:min-w-0 max-w-full px-5 sm:px-7 py-2.5 sm:py-3.5 text-xs sm:text-sm flex items-center justify-center gap-2"
                 >
-                  <MessageCircle className="w-4 h-4 text-emerald-400" />
-                  Orçar no WhatsApp
+                  <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
+                  <span>Orçar no WhatsApp</span>
                 </a>
               </div>
             </Reveal>
@@ -100,18 +125,22 @@ export const Audiovisual = () => {
         </div>
       </section>
 
-      {/* VITRINE DOS 8 SERVIÇOS AUDIOVISUAIS */}
-      <section className="py-16 lg:py-24 relative bg-brand-muted/20 border-y border-brand-border/40">
-        <div className="container mx-auto px-6">
+      {/* VITRINE DOS 8 SERVIÇOS AUDIOVISUAIS (SEÇÃO CLARA #F6F4FA) */}
+      <section className="py-20 lg:py-28 relative overflow-hidden w-full max-w-full bg-[#F6F4FA] text-[#08070D]">
+        {/* Transição suave do Hero escuro para esta seção clara */}
+        <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-[#08070D]/10 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#08070D]/10 to-transparent pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-[10px] md:text-xs font-semibold tracking-widest uppercase text-brand-amber mb-3 block">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] md:text-xs font-semibold tracking-widest uppercase bg-[#6128C8]/10 text-[#6128C8] border border-[#6128C8]/25 mb-4">
                 Especialidades Audiovisuais
               </span>
-              <h2 className="fluid-h2 font-extrabold text-white mb-4">
-                Captação, Edição e <span className="text-amber-gradient">Narrativa Visual</span>
+              <h2 className="fluid-h2 font-extrabold text-[#08070D] mb-4 tracking-tight">
+                Captação, Edição e <span className="bg-gradient-to-r from-[#6128C8] to-[#9557F5] bg-clip-text text-transparent">Narrativa Visual</span>
               </h2>
-              <p className="text-sm md:text-base text-brand-sand/80 font-light leading-relaxed">
+              <p className="text-sm md:text-base text-[#393340] font-light leading-relaxed max-w-2xl mx-auto">
                 Cada formato foi desenhado para suprir as necessidades de comunicação corporativa, feiras e redes sociais.
               </p>
             </div>
@@ -122,15 +151,15 @@ export const Audiovisual = () => {
               const Icon = srv.icon;
               return (
                 <Reveal key={idx} delayClass={`delay-${(idx % 4) * 100}`}>
-                  <div className="glass-panel p-6 rounded-2xl border border-brand-border/60 bg-brand-graphite/40 hover:border-brand-amber/50 transition-all duration-300 h-full flex flex-col justify-between group">
+                  <div className="p-6 rounded-2xl bg-white border border-[#E5E0EB] hover:border-[#6128C8]/40 hover:shadow-xl hover:shadow-[#6128C8]/5 transition-all duration-300 h-full flex flex-col justify-between group">
                     <div>
-                      <div className="w-12 h-12 rounded-xl bg-brand-amber/10 border border-brand-amber/30 flex items-center justify-center text-brand-amber mb-5 group-hover:scale-110 group-hover:bg-brand-amber group-hover:text-white transition-all">
+                      <div className="w-12 h-12 rounded-xl bg-[#6128C8]/10 border border-[#6128C8]/20 flex items-center justify-center text-[#6128C8] mb-5 group-hover:scale-110 group-hover:bg-[#6128C8] group-hover:text-white transition-all">
                         <Icon className="w-6 h-6" />
                       </div>
-                      <h3 className="font-display font-bold text-lg text-white mb-2 group-hover:text-brand-amber transition-colors">
+                      <h3 className="font-display font-bold text-lg text-[#08070D] mb-2 group-hover:text-[#6128C8] transition-colors">
                         {srv.title}
                       </h3>
-                      <p className="text-xs text-brand-sand/75 font-light leading-relaxed">
+                      <p className="text-xs text-[#393340] font-light leading-relaxed">
                         {srv.desc}
                       </p>
                     </div>
@@ -142,33 +171,35 @@ export const Audiovisual = () => {
         </div>
       </section>
 
-      {/* PACOTES AUDIOVISUAIS (Registro R$ 1.250, Conteúdo R$ 1.750, História R$ 2.500 [MAIS COMPLETO]) + Serviços Avulsos */}
-      <PackagesAudiovisual />
+      {/* SEÇÃO DE ORÇAMENTO SOB MEDIDA (ESCURA) */}
+      <OrcamentoSection type="audiovisual" />
 
-      {/* PORTFÓLIO FILTRADO PARA AUDIOVISUAL */}
+      {/* PORTFÓLIO FILTRADO PARA AUDIOVISUAL (ESCURA) */}
       <PortfolioGrid
         initialFilter="Audiovisual"
         showHeader={true}
         title="Projetos Audiovisuais Recentes"
-        subtitle="Confira registros de eventos, coberturas de eventos e produções com assinatura MIVLO."
+        subtitle="Confira registros de eventos, coberturas de estandes e produções com assinatura editorial e monocromática MIVLO."
       />
 
-      {/* COMO FUNCIONA AUDIOVISUAL: 6 ETAPAS */}
+      {/* COMO FUNCIONA AUDIOVISUAL: 6 ETAPAS (SEÇÃO CLARA #F6F4FA) */}
       <MethodologySection
         defaultType="audiovisual"
+        theme="light"
         title="Como Funciona a Produção Audiovisual"
         subtitle="Do primeiro alinhamento até a entrega do acervo tratado pronto para uso comercial."
       />
 
-      {/* FAQ AUDIOVISUAL */}
+      {/* FAQ AUDIOVISUAL (ESCURA) - Desativado temporariamente
       <FAQSection
         type="audiovisual"
         title="Perguntas Frequentes — Audiovisual"
         subtitle="Respostas diretas sobre diárias, prazos, direitos de imagem e cobertura de eventos."
       />
+      */}
 
-      {/* CTA DE CONTATO */}
-      <Contato />
+      {/* CTA DE CONTATO PADRONIZADO */}
+      <Contato type="audiovisual" />
     </div>
   );
 };

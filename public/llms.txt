@@ -1,0 +1,73 @@
+# MIVLO
+
+> Estúdio criativo e técnico independente especializado em produção audiovisual estratégica e engenharia de software / desenvolvimento web de alta performance. Fundado por Esther Dourado Batista, com atuação em São Paulo e alcance nacional.
+
+- **Nome da Marca:** MIVLO
+- **Fundadora & Diretora Técnica:** Esther Dourado Batista
+- **Slogan / Posicionamento:** Sua marca em tela. Sua marca em código.
+- **Idioma Principal:** Português do Brasil (pt-BR)
+- **URL Canônica Oficial:** https://estherdourado.github.io/Mivlo_React/
+- **Contato Comercial / WhatsApp:** https://wa.me/5511984242634
+- **E-mail de Contato:** contato@mivlo.com.br
+- **Repositório do Projeto:** https://github.com/EstherDourado/Mivlo_React
+
+---
+
+## Áreas de Atuação e Serviços
+
+### 1. Desenvolvimento Web e Engenharia Digital
+Soluções completas de desenvolvimento de software com foco em velocidade (Core Web Vitals), SEO técnico de ponta, conversão e código moderno e manutenível.
+- **Landing Pages de Alta Conversão:** Páginas para captação de leads, lançamentos de produtos e serviços locais.
+- **Sistemas Web Personalizados:** Painéis administrativos, dashboards, automações de processos e integrações de API.
+- **Aplicações Web Interativas:** Interfaces em React, TypeScript, Tailwind CSS com arquitetura moderna e responsiva.
+- **E-commerces e Catálogos Online:** Plataformas comerciais para marcas diretas ao consumidor (D2C) e B2B.
+- **Otimização de Performance & SEO:** Melhorias de LCP, INP, CLS, semântica HTML5 e microdados Schema.org.
+
+### 2. Produção Audiovisual Estratégica
+Conteúdo cinematográfico focado em valor de marca, presença corporativa e documentação de alto impacto visual.
+- **Cobertura de Feiras e Estandes:** Vídeos dinâmicos e fotos de arquitetura promocional e ativações de marca para expositores (ex: APAS Show, Expo Center Norte, São Paulo Expo).
+- **Vídeos Institucionais e Comerciais:** Filmes corporativos, manifestos de marca e storytelling para empresas e profissionais.
+- **Fotografia Corporativa e Retratos Profissionais:** Ensaios executivos e retratos para posicionamento de autoridade no LinkedIn e mídias sociais.
+- **Vídeos Verticais para Redes Sociais (Reels / TikTok):** Edição dinâmica, color grading e captação 4K otimizada para engajamento e retenção.
+
+---
+
+## Páginas Principais e Rotas Oficiais
+
+- [Página Inicial (Home)](https://estherdourado.github.io/Mivlo_React/): Apresentação integrada da MIVLO, proposta de valor, fundadora, tecnologias, galeria de destaques e canais de contato.
+- [Audiovisual](https://estherdourado.github.io/Mivlo_React/audiovisual): Portfólio completo de foto e vídeo corporativo, feiras de negócios, eventos de marca e depoimentos.
+- [Desenvolvimento](https://estherdourado.github.io/Mivlo_React/desenvolvimento): Serviços de desenvolvimento web, landing pages, sistemas sob medida, stack tecnológica e metodologia de engenharia.
+
+---
+
+## Portfólio de Projetos
+
+### Projetos de Desenvolvimento Web
+- [Don Ritter Barbearia](https://estherdourado.github.io/Mivlo_React/portfolio/donritter): Landing page com design sofisticado, cardápio de serviços e integração para agendamento online direto via WhatsApp.
+- [Mano Barba Barbearia](https://estherdourado.github.io/Mivlo_React/portfolio/manobarba): Página institucional voltada para conversão local, apresentação de equipe e estrutura.
+- [Merengue da Tati](https://estherdourado.github.io/Mivlo_React/portfolio/merengue): Cardápio digital interativo e catálogo de sobremesas para confeitaria artesanal com pedidos automatizados.
+- [LVS Joias Contemporâneas](https://estherdourado.github.io/Mivlo_React/portfolio/lvs): Vitrine e e-commerce digital para marca de semijoias finas com navegação intuitiva e fotos de alta resolução.
+- [MW Cenografia](https://estherdourado.github.io/Mivlo_React/portfolio/mw-cenografia): Portfólio corporativo focado em estandes, arquitetura promocional e cenografia para feiras de negócios.
+
+### Projetos de Cobertura Audiovisual & Feiras
+- [Adere Fitas Adesivas na APAS Show](https://estherdourado.github.io/Mivlo_React/portfolio/adere-expo): Cobertura fotográfica e cinematográfica completa de ativação de marca em estande de grande porte.
+- [Irialmag Brasil na Feira Industrial](https://estherdourado.github.io/Mivlo_React/portfolio/irialmag-expo): Produção de vídeo institucional e fotografia técnica de maquinário e atendimento a clientes.
+- [Supriled Soluções em LED](https://estherdourado.github.io/Mivlo_React/portfolio/supriled-expo): Captação audiovisual destacando impacto visual de painéis de LED, estande e fluxo de visitantes.
+
+---
+
+## Stack Tecnológica Utilizada pela MIVLO
+
+- **Frontend:** React 19, JavaScript (ESNext), TypeScript, Tailwind CSS, Vite
+- **Audiovisual:** CapCut Pro, DaVinci Resolve, Adobe Premiere Pro, Sony Alpha FX line, Color Grading cinematográfico
+- **Hospedagem & Infraestrutura:** GitHub Pages, CDN global, Git, automações CI/CD
+- **SEO & Performance:** HTML5 Semântico, Schema.org JSON-LD, Core Web Vitals, Open Graph, Twitter Cards, robots.txt, sitemap.xml
+
+---
+
+## Contato e Informações Institucionais
+
+- **WhatsApp Comercial:** +55 (11) 98424-2634
+- **E-mail:** contato@mivlo.com.br
+- **Localização:** São Paulo - SP, Brasil (Atendimento presencial para audiovisual e remoto/global para desenvolvimento)
+- **Status de Atendimento:** Disponível para novos projetos de desenvolvimento web e produções audiovisuais.

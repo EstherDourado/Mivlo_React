@@ -1,38 +1,59 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { Reveal } from '../ui/Reveal';
-import { Sparkles, Cpu } from 'lucide-react';
+import { Cpu } from 'lucide-react';
+import { asset } from '../../config/site';
 
+// Imagens oficiais das tecnologias em alta definição fornecidas pelo usuário
 const TECH_ITEMS = [
-  { name: 'React', category: 'Frontend', desc: 'Aplicações web modernas, reativas e com arquitetura escalável.' },
-  { name: 'JavaScript', category: 'Linguagem', desc: 'Lógica dinâmica client-side e integrações assíncronas de alta performance.' },
-  { name: 'HTML5', category: 'Frontend', desc: 'Estruturação semântica, acessibilidade e SEO técnico impecável.' },
-  { name: 'CSS3', category: 'Estilização', desc: 'Design systems fluidos, animações a 60fps e responsividade precisa.' },
-  { name: 'PHP', category: 'Backend', desc: 'Desenvolvimento backend seguro, APIs e integração com legados.' },
-  { name: 'C#', category: 'Backend', desc: 'Sistemas corporativos robustos, regras de negócio críticas e alta tipagem.' },
-  { name: '.NET', category: 'Framework', desc: 'Arquitetura de microsserviços, segurança empresarial e alto throughput.' },
-  { name: 'SQL Server', category: 'Banco de Dados', desc: 'Modelagem relacional, queries de alta eficiência e integridade de dados.' },
-  { name: 'Git', category: 'Controle de Versão', desc: 'Versionamento disciplinado de código, branching strategy e histórico seguro.' },
-  { name: 'GitHub', category: 'DevOps & Cloud', desc: 'CI/CD automatizado, repositórios em nuvem e governança de código.' },
-  { name: 'VS Code', category: 'Ambiente', desc: 'Produtividade de ponta com linting e esteira de desenvolvimento limpo.' },
-  { name: 'Figma', category: 'Design & UX', desc: 'Prototipagem de alta fidelidade, design systems e alinhamento visual.' },
-  { name: 'Gemini', category: 'IA & Inovação', desc: 'Inteligência artificial generativa aplicada a fluxos avançados e automação.' },
-  { name: 'Claude', category: 'IA & Raciocínio', desc: 'Modelagem analítica, raciocínio complexo e assistência de engenharia.' },
-  { name: 'UiPath Studio', category: 'Automação / RPA', desc: 'Automação robótica de processos repetitivos para eficiência operacional.' },
+  { name: 'React', category: 'Frontend', icon: asset('icons/tech/logos--react.png') },
+  { name: 'JavaScript', category: 'Linguagem', icon: asset('icons/tech/logos--javascript.png') },
+  { name: 'HTML5', category: 'Estruturação', icon: asset('icons/tech/vscode-icons--file-type-html.png') },
+  { name: 'CSS3', category: 'Estilização', icon: asset('icons/tech/thesvg-color--css.png') },
+  { name: 'PHP', category: 'Backend & Web', icon: asset('icons/tech/logos--php.png') },
+  { name: 'CapCut', category: 'Edição Audiovisual', icon: asset('icons/tech/selfhst--capcut-dark.png') },
+  { name: 'Antigravity', category: 'IA & Engenharia', icon: asset('icons/tech/logos--antigravity.png') },
+  { name: 'C#', category: 'Backend & Desktop', icon: asset('icons/tech/devicon--csharp.png') },
+  { name: '.NET', category: 'Framework & API', icon: asset('icons/tech/dotnet.svg') },
+  { name: 'SQL Server', category: 'Banco de Dados', icon: asset('icons/tech/Microsoft_SQL_Server_2025_icon.svg.webp') },
+  { name: 'MySQL', category: 'Banco de Dados', icon: asset('icons/tech/devicon--mysql.png') },
+  { name: 'Python', category: 'Linguagem & Automação', icon: asset('icons/tech/selfhst--python.png') },
+  { name: 'Java', category: 'Backend & Sistemas', icon: asset('icons/tech/devicon--java.png') },
+  { name: 'Git', category: 'Controle de Versão', icon: asset('icons/tech/devicon--git.png') },
+  { name: 'GitHub', category: 'DevOps & Repositório', icon: asset('icons/tech/ant-design--github-outlined.png') },
+  { name: 'VS Code', category: 'Ambiente de Dev', icon: asset('icons/tech/vscode-icons--file-type-vscode.png') },
+  { name: 'Visual Studio', category: 'IDE Completa', icon: asset('icons/tech/devicon--visualstudio.png') },
+  { name: 'Figma', category: 'Design UI/UX', icon: asset('icons/tech/devicon--figma.png') },
+  { name: 'Canva', category: 'Design & Criativos', icon: asset('icons/tech/thesvg-color--canva.png') },
+  { name: 'Gemini', category: 'Inteligência Artificial', icon: asset('icons/tech/thesvg-color--gemini.png') },
+  { name: 'Claude', category: 'IA & Raciocínio', icon: asset('icons/tech/thesvg-color--claude.png') },
+  { name: 'OpenAI', category: 'Inteligência Artificial', icon: asset('icons/tech/thesvg-color--openai-light.png') },
 ];
 
 export const TechSphere = () => {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
   const [activeTech, setActiveTech] = useState(null);
+  const imageCacheRef = useRef({});
 
-  // Fibonacci Sphere distribution
+  // Precarrega as imagens oficiais das tecnologias com suas cores autênticas
+  useEffect(() => {
+    TECH_ITEMS.forEach((item) => {
+      if (!imageCacheRef.current[item.name]) {
+        const img = new Image();
+        img.src = item.icon;
+        imageCacheRef.current[item.name] = img;
+      }
+    });
+  }, []);
+
+  // Distribuição esférica de Fibonacci
   const points = useMemo(() => {
     const pts = [];
     const n = TECH_ITEMS.length;
-    const phi = Math.PI * (3 - Math.sqrt(5)); // Golden ratio angle
+    const phi = Math.PI * (3 - Math.sqrt(5)); // Ângulo de ouro
 
     for (let i = 0; i < n; i++) {
-      const y = 1 - (i / (n - 1)) * 2; // y goes from 1 to -1
+      const y = 1 - (i / (n - 1)) * 2;
       const radiusAtY = Math.sqrt(1 - y * y);
       const theta = phi * i;
 
@@ -67,7 +88,6 @@ export const TechSphere = () => {
     let displayHeight = canvas.offsetHeight;
     let radius = Math.min(displayWidth, displayHeight) * 0.38;
 
-    // Speeds and Angles
     let rotX = 0.002;
     let rotY = 0.003;
     let isDragging = false;
@@ -88,7 +108,6 @@ export const TechSphere = () => {
 
     window.addEventListener('resize', handleResize);
 
-    // Mouse / Touch Handlers for Dragging
     const onMouseDown = (e) => {
       isDragging = true;
       startX = e.clientX;
@@ -109,13 +128,13 @@ export const TechSphere = () => {
         startY = e.clientY;
       }
 
-      // Detect hover on projected points
+      // Detecta hover no nó baseado na posição projetada com hit target expandido
       let hovered = null;
       for (const p of points) {
         const projX = displayWidth / 2 + p.x * radius;
         const projY = displayHeight / 2 + p.y * radius;
         const dist = Math.hypot(mouseX - projX, mouseY - projY);
-        if (dist < 32 && p.z > -0.2) {
+        if (dist < 34 && p.z > -0.35) {
           hovered = p.tech;
           break;
         }
@@ -127,12 +146,30 @@ export const TechSphere = () => {
       isDragging = false;
     };
 
-    // Touch support for Mobile
+    // Suporte touch e toque no celular
     const onTouchStart = (e) => {
       if (e.touches.length === 1) {
         isDragging = true;
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
+
+        const rect = canvas.getBoundingClientRect();
+        const touchX = e.touches[0].clientX - rect.left;
+        const touchY = e.touches[0].clientY - rect.top;
+
+        let tapped = null;
+        for (const p of points) {
+          const projX = displayWidth / 2 + p.x * radius;
+          const projY = displayHeight / 2 + p.y * radius;
+          const dist = Math.hypot(touchX - projX, touchY - projY);
+          if (dist < 38 && p.z > -0.35) {
+            tapped = p.tech;
+            break;
+          }
+        }
+        if (tapped) {
+          setActiveTech((prev) => (prev?.name === tapped.name ? null : tapped));
+        }
       }
     };
 
@@ -144,22 +181,6 @@ export const TechSphere = () => {
         dragRotX = -dy * 0.005;
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
-
-        const rect = canvas.getBoundingClientRect();
-        const touchX = e.touches[0].clientX - rect.left;
-        const touchY = e.touches[0].clientY - rect.top;
-
-        let hovered = null;
-        for (const p of points) {
-          const projX = displayWidth / 2 + p.x * radius;
-          const projY = displayHeight / 2 + p.y * radius;
-          const dist = Math.hypot(touchX - projX, touchY - projY);
-          if (dist < 36 && p.z > -0.2) {
-            hovered = p.tech;
-            break;
-          }
-        }
-        if (hovered) setActiveTech(hovered);
       }
     };
 
@@ -174,11 +195,10 @@ export const TechSphere = () => {
     window.addEventListener('touchmove', onTouchMove, { passive: true });
     window.addEventListener('touchend', onTouchEnd);
 
-    // Animation Loop
+    // Loop de renderização
     const render = () => {
       ctx.clearRect(0, 0, displayWidth, displayHeight);
 
-      // Inertia & Natural Rotation
       if (isDragging) {
         rotX = dragRotX;
         rotY = dragRotY;
@@ -189,18 +209,15 @@ export const TechSphere = () => {
         rotY = 0.0028 + dragRotY;
       }
 
-      // Rotate coordinates
       const cosX = Math.cos(rotX);
       const sinX = Math.sin(rotX);
       const cosY = Math.cos(rotY);
       const sinY = Math.sin(rotY);
 
       points.forEach((p) => {
-        // Rotate around Y
         let x1 = p.x * cosY - p.z * sinY;
         let z1 = p.z * cosY + p.x * sinY;
 
-        // Rotate around X
         let y2 = p.y * cosX - z1 * sinX;
         let z2 = z1 * cosX + p.y * sinX;
 
@@ -209,10 +226,9 @@ export const TechSphere = () => {
         p.z = z2;
       });
 
-      // Sort points by z for proper depth rendering
       const sortedPoints = [...points].sort((a, b) => a.z - b.z);
 
-      // Draw subtle connecting lines between close points
+      // Linhas orbitais de conexão sutis
       ctx.lineWidth = 0.75;
       for (let i = 0; i < sortedPoints.length; i++) {
         for (let j = i + 1; j < sortedPoints.length; j++) {
@@ -223,7 +239,7 @@ export const TechSphere = () => {
           if (dist3D < 0.75) {
             const avgZ = (p1.z + p2.z) / 2;
             const alpha = Math.max(0.04, (avgZ + 1) * 0.12);
-            ctx.strokeStyle = `rgba(176, 106, 179, ${alpha})`;
+            ctx.strokeStyle = `rgba(97, 40, 200, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(displayWidth / 2 + p1.x * radius, displayHeight / 2 + p1.y * radius);
             ctx.lineTo(displayWidth / 2 + p2.x * radius, displayHeight / 2 + p2.y * radius);
@@ -232,63 +248,95 @@ export const TechSphere = () => {
         }
       }
 
-      // Draw Nodes
+      // Renderiza cada tecnologia como ícone flutuante proporcional com suas cores originais
       sortedPoints.forEach((p) => {
         const projX = displayWidth / 2 + p.x * radius;
         const projY = displayHeight / 2 + p.y * radius;
-        const scale = (p.z + 1.6) / 2.6; // Scale factor 0.5 to 1.1
-        const alpha = Math.max(0.25, (p.z + 1.2) / 2.2);
+        const scale = (p.z + 1.6) / 2.6;
+        const alpha = Math.max(0.35, (p.z + 1.2) / 2.2);
         const isHovered = activeTech?.name === p.tech.name;
 
-        // Outer glow on hover or front node
-        if (isHovered || p.z > 0.4) {
-          const glowGrad = ctx.createRadialGradient(projX, projY, 0, projX, projY, 20 * scale);
-          glowGrad.addColorStop(0, isHovered ? 'rgba(217, 70, 239, 0.6)' : 'rgba(69, 104, 220, 0.25)');
-          glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        // Dimensão máxima proporcional aumentada
+        const maxDim = isHovered ? 56 : Math.max(28, 42 * scale);
+
+        // Glow suave no hover ao redor do ícone
+        if (isHovered) {
+          const glowGrad = ctx.createRadialGradient(projX, projY, 0, projX, projY, maxDim * 0.85);
+          glowGrad.addColorStop(0, 'rgba(149, 87, 245, 0.45)');
+          glowGrad.addColorStop(1, 'rgba(149, 87, 245, 0)');
           ctx.fillStyle = glowGrad;
           ctx.beginPath();
-          ctx.arc(projX, projY, 20 * scale, 0, Math.PI * 2);
+          ctx.arc(projX, projY, maxDim * 0.85, 0, Math.PI * 2);
           ctx.fill();
         }
 
-        // Center dot
-        ctx.fillStyle = isHovered ? '#ffffff' : `rgba(224, 220, 237, ${alpha})`;
-        ctx.beginPath();
-        ctx.arc(projX, projY, (isHovered ? 6 : 4) * scale, 0, Math.PI * 2);
-        ctx.fill();
+        // Desenha o ícone em suas cores originais preservando rigorosamente o aspect ratio natural (sem distorção)
+        const img = imageCacheRef.current[p.tech.name];
+        let drawW = maxDim;
+        let drawH = maxDim;
 
-        // Label Badge
-        const fontSize = Math.max(10, Math.round(13 * scale));
-        ctx.font = `${isHovered ? '700' : '600'} ${fontSize}px "Plus Jakarta Sans", sans-serif`;
-        const text = p.tech.name;
-        const textMetrics = ctx.measureText(text);
-        const textWidth = textMetrics.width;
-        const pillPaddingX = 8 * scale;
-        const pillHeight = 22 * scale;
+        if (img && img.complete && img.naturalWidth !== 0) {
+          const naturalW = img.naturalWidth || 1;
+          const naturalH = img.naturalHeight || 1;
 
-        // Badge pill background
-        const pillX = projX - textWidth / 2 - pillPaddingX;
-        const pillY = projY + 8 * scale;
+          // Escala proporcional exata (contain) para que o ícone nunca seja achatado ou esticado
+          const scaleRatio = Math.min(maxDim / naturalW, maxDim / naturalH);
+          drawW = naturalW * scaleRatio;
+          drawH = naturalH * scaleRatio;
 
-        ctx.fillStyle = isHovered
-          ? 'rgba(176, 106, 179, 0.95)'
-          : `rgba(27, 1, 59, ${Math.max(0.4, alpha * 0.85)})`;
-        ctx.strokeStyle = isHovered
-          ? '#ffffff'
-          : `rgba(224, 220, 237, ${alpha * 0.4})`;
-        ctx.lineWidth = 1;
+          ctx.save();
+          if (isHovered) {
+            ctx.shadowColor = 'rgba(149, 87, 245, 0.65)';
+            ctx.shadowBlur = 18;
+          }
+          ctx.globalAlpha = isHovered ? 1.0 : alpha;
+          ctx.drawImage(
+            img,
+            projX - drawW / 2,
+            projY - drawH / 2,
+            drawW,
+            drawH
+          );
+          ctx.restore();
+        }
 
-        // Rounded pill
-        ctx.beginPath();
-        ctx.roundRect(pillX, pillY, textWidth + pillPaddingX * 2, pillHeight, 6 * scale);
-        ctx.fill();
-        ctx.stroke();
+        // Exibe o nome da tecnologia via tooltip flutuante APENAS no hover/touch
+        if (isHovered) {
+          const text = p.tech.name;
+          ctx.font = 'bold 12px "Plus Jakarta Sans", sans-serif';
+          const textMetrics = ctx.measureText(text);
+          const pillPaddingX = 12;
+          const pillWidth = textMetrics.width + pillPaddingX * 2;
+          const pillHeight = 26;
 
-        // Text inside pill
-        ctx.fillStyle = isHovered ? '#ffffff' : `rgba(255, 255, 255, ${alpha})`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(text, projX, pillY + pillHeight / 2);
+          // Evita que o tooltip seja cortado nas bordas da tela
+          const pillX = Math.max(10, Math.min(displayWidth - pillWidth - 10, projX - pillWidth / 2));
+          const pillY = Math.max(10, projY - drawH / 2 - pillHeight - 8);
+
+          // Caixa do tooltip escura com borda violeta
+          ctx.fillStyle = '#100D18';
+          ctx.strokeStyle = '#9557F5';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.roundRect(pillX, pillY, pillWidth, pillHeight, 8);
+          ctx.fill();
+          ctx.stroke();
+
+          // Pequena seta apontando para o nó
+          ctx.beginPath();
+          ctx.moveTo(projX - 4, pillY + pillHeight);
+          ctx.lineTo(projX + 4, pillY + pillHeight);
+          ctx.lineTo(projX, pillY + pillHeight + 4);
+          ctx.closePath();
+          ctx.fillStyle = '#100D18';
+          ctx.fill();
+
+          // Texto do nome
+          ctx.fillStyle = '#FFFFFF';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(text, pillX + pillWidth / 2, pillY + pillHeight / 2);
+        }
       });
 
       animationFrameId = requestAnimationFrame(render);
@@ -309,94 +357,57 @@ export const TechSphere = () => {
   }, [points, activeTech]);
 
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden bg-brand-graphite/40 border-y border-brand-border/40">
-      <div className="container mx-auto px-6" ref={containerRef}>
+    <section className="py-20 lg:py-28 relative overflow-hidden bg-[#F6F4FA] text-[#08070D] w-full max-w-full">
+      {/* Transição sutil do escuro acima para o claro */}
+      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#08070D] to-transparent opacity-5 pointer-events-none"></div>
+
+      <div className="container mx-auto px-4 sm:px-6" ref={containerRef}>
         <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
-            <span className="text-[10px] md:text-xs font-semibold tracking-widest uppercase text-brand-amber mb-3 inline-flex items-center gap-2">
-              <Cpu className="w-3.5 h-3.5" />
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+            <span className="text-[10px] md:text-xs font-mono font-semibold tracking-widest uppercase text-[#6128C8] mb-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6128C8]/10 border border-[#6128C8]/20">
+              <Cpu className="w-3.5 h-3.5 text-[#6128C8]" />
               Stack & Engenharia
             </span>
-            <h2 className="fluid-h2 font-extrabold text-white mb-4">
-              Meu universo <span className="text-amber-gradient">tecnológico</span>
+            <h2 className="fluid-h2 font-extrabold text-[#08070D] mb-4">
+              Meu universo <span className="text-purple-gradient-dark">tecnológico</span>
             </h2>
-            <p className="text-sm md:text-base text-brand-sand/80 font-light leading-relaxed">
-              Uma síntese das tecnologias, linguagens, ferramentas de automação e modelos de IA que utilizo para projetar e entregar soluções de alta performance na MIVLO.
+            <p className="text-sm md:text-base text-[#393340] font-light leading-relaxed">
+              As ferramentas que nos conectam, criam e transformam ideias em resultados. Passe o cursor ou toque nos ícones para identificar cada tecnologia.
             </p>
           </div>
         </Reveal>
 
-        {/* Container da Esfera 3D e Tooltip Lateral */}
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 max-w-6xl mx-auto">
-          {/* Canvas da Esfera 3D Interativa */}
-          <div className="relative w-full max-w-[540px] aspect-square flex items-center justify-center">
-            {/* Anéis decorativos de fundo */}
-            <div className="absolute inset-0 rounded-full border border-brand-amber/15 pointer-events-none animate-pulse-glow"></div>
-            <div className="absolute inset-8 rounded-full border border-brand-amber2/10 pointer-events-none"></div>
+        {/* Esfera 3D Centralizada (caixa lateral removida conforme solicitado) */}
+        <div className="flex flex-col items-center justify-center max-w-4xl mx-auto w-full">
+          <div className="relative w-full max-w-[560px] aspect-square flex items-center justify-center overflow-hidden">
+            {/* Anéis orbitais decorativos em violeta */}
+            <div className="absolute inset-0 rounded-full border border-[#6128C8]/15 pointer-events-none animate-pulse-glow"></div>
+            <div className="absolute inset-10 rounded-full border border-[#9557F5]/10 pointer-events-none"></div>
 
             <canvas
               ref={canvasRef}
               className="w-full h-full cursor-grab active:cursor-grabbing touch-none select-none z-10"
               style={{ width: '100%', height: '100%' }}
-              aria-label="Esfera 3D interativa de tecnologias da Esther"
+              aria-label="Esfera 3D interativa de tecnologias com logos oficiais"
             />
 
             {/* Dica interativa no rodapé da esfera */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 pointer-events-none z-20">
-              <span className="text-[10px] font-mono tracking-widest uppercase text-brand-sand/50 bg-brand-graphite/80 px-3 py-1 rounded-full border border-white/5 backdrop-blur-sm">
-                Arraste para girar • Passe o cursor
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 pointer-events-none z-20 w-full px-2 flex justify-center">
+              <span className="text-[8px] sm:text-[10px] font-mono tracking-wider uppercase text-[#393340]/80 bg-white/95 px-3 py-1 rounded-full border border-[#E5E0EB] shadow-sm backdrop-blur-sm text-center max-w-[94%] truncate">
+                Arraste para girar • Toque para ver o nome
               </span>
             </div>
           </div>
+        </div>
 
-          {/* Painel de Detalhes / Tooltip da Tecnologia em Foco */}
-          <div className="w-full lg:w-96 flex flex-col gap-4">
-            <div className="glass-panel p-6 rounded-2xl border border-brand-border/80 bg-brand-muted/40 shadow-xl transition-all duration-300 min-h-[220px] flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-amber px-2.5 py-0.5 rounded-full bg-brand-amber/10 border border-brand-amber/30">
-                    {activeTech ? activeTech.category : 'Interativo'}
-                  </span>
-                  <Sparkles className="w-4 h-4 text-brand-amber animate-pulse" />
-                </div>
-
-                <h3 className="text-2xl font-display font-bold text-white mb-2">
-                  {activeTech ? activeTech.name : 'Explore a Esfera'}
-                </h3>
-
-                <p className="text-sm text-brand-sand/80 font-light leading-relaxed">
-                  {activeTech
-                    ? activeTech.desc
-                    : 'Passe o cursor sobre os nós da esfera 3D ou toque na tela para conhecer o papel de cada tecnologia no desenvolvimento de software e nas automações da MIVLO.'}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-brand-sand/50 font-mono">
-                <span>15 Tecnologias Core</span>
-                <span className="text-emerald-400 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  Full Stack + IA
-                </span>
-              </div>
-            </div>
-
-            {/* Badges Rápidas para Mobile / Acessibilidade */}
-            <div className="flex flex-wrap gap-1.5 justify-center lg:justify-start">
-              {TECH_ITEMS.map((t) => (
-                <button
-                  key={t.name}
-                  onClick={() => setActiveTech(t)}
-                  className={`text-[11px] font-mono px-2.5 py-1 rounded-lg border transition-all ${
-                    activeTech?.name === t.name
-                      ? 'bg-brand-amber text-white border-brand-amber shadow-md'
-                      : 'bg-white/5 text-brand-sand/70 border-white/5 hover:bg-white/10 hover:text-white'
-                  }`}
-                >
-                  {t.name}
-                </button>
-              ))}
-            </div>
-          </div>
+        {/* Lista acessível para leitores de tela e navegação assistiva */}
+        <div className="sr-only">
+          <h3>Tecnologias que compõem o ecossistema MIVLO:</h3>
+          <ul>
+            {TECH_ITEMS.map((tech) => (
+              <li key={tech.name}>{tech.name} — {tech.category}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

@@ -1,136 +1,126 @@
 import React from 'react';
 import { Reveal } from '../ui/Reveal';
-import { Camera, Code2, Sparkles, ArrowRight } from 'lucide-react';
-import { asset } from '../../config/site';
+import { ArrowRight, Sparkles, MessageCircle, Layers, Code, Camera } from 'lucide-react';
+import { siteConfig, asset } from '../../config/site';
 
 export const AboutEsther = () => {
   return (
-    <section id="sobre" className="py-20 lg:py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
-            <span className="text-[10px] md:text-xs font-semibold tracking-widest uppercase text-brand-amber mb-3 inline-flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              Liderança & Criação
-            </span>
-            <h2 className="fluid-h2 font-extrabold text-white mb-4">
-              Na interseção entre <br />
-              <span className="text-amber-gradient">código e imagem.</span>
-            </h2>
-            <p className="text-sm md:text-lg text-brand-sand/80 font-light leading-relaxed">
-              Conheça quem idealizou a MIVLO para entregar soluções completas de presença digital e comunicação visual.
-            </p>
-          </div>
-        </Reveal>
+    <section 
+      id="sobre" 
+      className="py-20 lg:py-28 relative overflow-hidden w-full max-w-full bg-gradient-to-b from-[#FFFFFF] via-[#FAF8FD] to-[#FFFFFF] text-[#08070D]"
+      role="region"
+      aria-label="Sobre a Fundadora da MIVLO"
+    >
+      {/* Luz ambiente difusa em lavanda */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#9557F5]/10 blur-[140px] rounded-full pointer-events-none" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
-          {/* FOTOGRAFIA DA ESTHER EM DESTAQUE */}
-          <div className="lg:col-span-5 flex justify-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center max-w-6xl mx-auto">
+          
+          {/* COLUNA ESQUERDA: APRESENTAÇÃO TEXTUAL OBJETIVA */}
+          <div className="lg:col-span-6 text-left space-y-6 order-2 lg:order-1">
             <Reveal>
-              <div className="relative group max-w-[380px] w-full">
-                {/* Glow decorativo de fundo */}
-                <div className="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-brand-amber via-brand-amber2 to-purple-600 opacity-40 blur-2xl group-hover:opacity-60 transition-opacity duration-700 pointer-events-none"></div>
-
-                {/* Moldura com Viewfinder */}
-                <div className="viewfinder relative rounded-3xl overflow-hidden glass-panel border border-brand-border/80 shadow-2xl p-2 bg-brand-muted/30">
-                  <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-black/40">
-                    <img
-                      src={asset('img/esther.jpg')}
-                      alt="Esther Dourado Batista — Criadora da MIVLO"
-                      className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                    />
-
-                    {/* Gradient overlay sutil */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1b013b]/90 via-transparent to-transparent opacity-80"></div>
-
-                    {/* Legenda inferior sobreposta */}
-                    <div className="absolute bottom-4 left-4 right-4 text-left">
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-brand-amber block mb-0.5 font-bold">
-                        Fundadora & Líder Técnica
-                      </span>
-                      <h3 className="text-xl font-display font-extrabold text-white">
-                        Esther Dourado Batista
-                      </h3>
-                      <p className="text-xs text-brand-sand/80 font-light">
-                        Fotógrafa • Filmmaker • Desenvolvedora Full Stack
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Badge Lateral */}
-                <div className="absolute -bottom-4 -right-4 glass-panel bg-brand-graphite/95 border border-brand-border/80 px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-brand-amber/20 border border-brand-amber/40 flex items-center justify-center text-brand-amber">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] uppercase font-mono text-brand-sand/60 block">Visão MIVLO</span>
-                    <span className="text-xs font-bold text-white">Media + Tech Dual Hub</span>
-                  </div>
-                </div>
+              {/* Badge da Seção */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-[#6128C8]/10 text-[#6128C8] border border-[#6128C8]/20 mb-3">
+                <Sparkles className="w-3.5 h-3.5 text-[#9557F5]" />
               </div>
-            </Reveal>
-          </div>
 
-          {/* APRESENTAÇÃO TEXTUAL E AUTORIDADE */}
-          <div className="lg:col-span-7 flex flex-col justify-center text-left space-y-6">
-            <Reveal delayClass="delay-100">
-              <div className="space-y-4">
-                <span className="text-xs font-mono font-semibold tracking-wider text-brand-amber uppercase">
-                  Sobre Esther Dourado Batista
+              {/* Título Principal */}
+              <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#08070D] leading-[1.2] tracking-tight">
+                Quem está por trás da{' '}
+                <span className="bg-gradient-to-r from-[#6128C8] via-[#803FE8] to-[#9557F5] bg-clip-text text-transparent">
+                  MIVLO?
                 </span>
-                <h3 className="text-2xl md:text-3xl font-display font-extrabold text-white leading-tight">
-                  Construir o produto com rigor de engenharia. <br />
-                  <span className="text-amber-gradient">Mostrar o valor com olhar de cinema.</span>
-                </h3>
-                <p className="text-sm md:text-base text-brand-sand/80 font-light leading-relaxed">
-                  Sou apaixonada pela criação em dois mundos que raramente conversam: a precisão lógica do desenvolvimento de software e a sensibilidade narrativa da produção audiovisual.
-                </p>
-                <p className="text-sm md:text-base text-brand-sand/80 font-light leading-relaxed">
-                  Na tecnologia, desenvolvo Landing Pages de alta conversão, sites institucionais modernos e sistemas web sob medida, sempre priorizando velocidade, código limpo e arquitetura escalável.
-                </p>
-                <p className="text-sm md:text-base text-brand-sand/80 font-light leading-relaxed">
-                  No audiovisual, atuo como fotógrafa e filmmaker registrando projetos corporativos, grandes estandes em feiras e conteúdos dinâmicos para marcas que exigem elegância, agilidade e presença real.
-                </p>
+              </h2>
+
+              {/* Texto Sugerido Oficial */}
+              <p className="text-sm sm:text-base text-[#393340] font-normal leading-relaxed pt-2 max-w-xl">
+                Sou <strong className="font-semibold text-[#08070D]">Esther Dourado Batista</strong>, fotógrafa, videomaker e desenvolvedora. Uno criatividade, narrativa visual e tecnologia para transformar ideias em experiências digitais e audiovisuais com identidade própria.
+              </p>
+
+              {/* Pilares de Especialidade em Pills Sutis */}
+              <div className="pt-2 flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white border border-[#E5E0EB] shadow-sm text-xs font-medium text-[#393340]">
+                  <Camera className="w-3.5 h-3.5 text-[#6128C8]" />
+                  Audiovisual & Direção
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white border border-[#E5E0EB] shadow-sm text-xs font-medium text-[#393340]">
+                  <Code className="w-3.5 h-3.5 text-[#6128C8]" />
+                  Engenharia Web & Sistemas
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white border border-[#E5E0EB] shadow-sm text-xs font-medium text-[#393340]">
+                  <Layers className="w-3.5 h-3.5 text-[#6128C8]" />
+                  Identidade Autoral
+                </span>
               </div>
 
-              {/* Grid dos Dois Pilares com Ícones */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                <div className="glass-panel p-4 rounded-xl border border-brand-border/60 bg-brand-muted/20">
-                  <div className="flex items-center gap-2 mb-2 text-brand-amber">
-                    <Code2 className="w-5 h-5" />
-                    <h4 className="font-display font-bold text-sm text-white">Frente Tecnologia</h4>
-                  </div>
-                  <p className="text-xs text-brand-sand/70 font-light leading-relaxed">
-                    Full Stack (React, C#, .NET, SQL, PHP), automações em IA e RPA com foco absoluto em conversão e usabilidade.
-                  </p>
-                </div>
-
-                <div className="glass-panel p-4 rounded-xl border border-brand-border/60 bg-brand-muted/20">
-                  <div className="flex items-center gap-2 mb-2 text-brand-amber">
-                    <Camera className="w-5 h-5" />
-                    <h4 className="font-display font-bold text-sm text-white">Frente Audiovisual</h4>
-                  </div>
-                  <p className="text-xs text-brand-sand/70 font-light leading-relaxed">
-                    Fotografia corporativa, filmagem de estandes, aftermovies 4K, storymaker e acervos que continuam vendendo.
-                  </p>
-                </div>
-              </div>
-
-              {/* Botão de Ação */}
-              <div className="pt-4 flex flex-col sm:flex-row gap-3">
-                <a href="#contato" className="btn-amber text-sm px-7 py-3">
-                  Fale com a Esther
-                  <ArrowRight className="w-4 h-4 ml-1" />
+              {/* Botões de Ação */}
+              <div className="pt-4 sm:pt-6 flex flex-col sm:flex-row items-center sm:items-center gap-2.5 sm:gap-3.5">
+                <a
+                  href={siteConfig.getWhatsAppLink("general")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-purple w-auto min-w-[190px] sm:min-w-0 max-w-full px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-full text-xs sm:text-sm shadow-md shadow-[#6128C8]/25 flex items-center justify-center gap-2 font-semibold hover:shadow-lg hover:shadow-[#6128C8]/35 transition-all"
+                  aria-label="Conversar com Esther via WhatsApp"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Conversar com Esther</span>
                 </a>
-                <a href="#frentes" className="btn-ghost text-sm px-6 py-3">
-                  Ver as frentes de atuação
+
+                <a
+                  href="#quem-e-a-mivlo"
+                  className="btn-ghost-light w-auto min-w-[190px] sm:min-w-0 max-w-full px-5 sm:px-6 py-2.5 sm:py-3.5 rounded-full text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-sm"
+                >
+                  <span>Conhecer a MIVLO</span>
+                  <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
             </Reveal>
           </div>
+
+          {/* COLUNA DIREITA: COMPOSIÇÃO ARTÍSTICA DA FUNDADORA */}
+          <div className="lg:col-span-6 flex justify-center relative w-full order-1 lg:order-2">
+            <Reveal delayClass="delay-100">
+              <div className="relative flex items-center justify-center py-4 sm:py-6 px-3 sm:px-6 w-full max-w-[460px] mx-auto">
+                
+                {/* Camada 1: Halo suave de fundo em lavanda/lilás */}
+                <div 
+                  className="absolute -inset-4 sm:-inset-8 rounded-full bg-gradient-to-tr from-[#9557F5]/25 via-[#B99AFF]/15 to-transparent blur-3xl pointer-events-none" 
+                  aria-hidden="true" 
+                />
+
+                {/* Camada 2: Forma Orgânica Roxa com Curvas Assimétricas (atrás da moldura, deslocada para a esquerda/inferior) */}
+                <div 
+                  className="organic-purple-blob absolute -left-3 sm:-left-6 md:-left-8 -bottom-3 sm:-bottom-6 md:-bottom-8 w-[72%] sm:w-[75%] h-[72%] sm:h-[75%] pointer-events-none z-0" 
+                  aria-hidden="true" 
+                />
+
+                {/* Moldura Orgânica Escura com a Fotografia Real (sem texto cortado dentro) */}
+                <div className="organic-photo-frame relative z-20 overflow-hidden w-[250px] xs:w-[280px] sm:w-[340px] md:w-[390px] lg:w-[420px] aspect-[4/4.5] border border-black/10">
+                  <img
+                    src={asset('img/esther.jpg')}
+                    alt="Esther Dourado Batista — Fotógrafa, Videomaker e Desenvolvedora"
+                    className="w-full h-full object-cover object-[center_18%] select-none transition-transform duration-700 hover:scale-105"
+                    loading="lazy"
+                  />
+                  {/* Sutil vinheta na base apenas para dar profundidade à foto */}
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#08070D]/50 to-transparent pointer-events-none" />
+                </div>
+
+                {/* Assinatura Manuscrita 'Esther' elevada no canto inferior direito */}
+                <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 right-1 sm:-right-2 md:-right-4 z-30 pointer-events-none select-none">
+                  <span className="font-signature text-5xl xs:text-6xl sm:text-7xl md:text-8xl text-[#7E22CE] sm:text-[#8B2EE8] drop-shadow-[0_4px_18px_rgba(255,255,255,0.95)] block transform -rotate-6 transition-transform duration-500">
+                    Esther
+                  </span>
+                </div>
+
+              </div>
+            </Reveal>
+          </div>
+
         </div>
       </div>
     </section>
   );
 };
+

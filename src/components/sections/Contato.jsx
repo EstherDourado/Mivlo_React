@@ -1,141 +1,48 @@
-import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
-import Toastify from 'toastify-js';
-import { sendEmail } from '../../lib/email';
+import React from 'react';
+import { MessageCircle, ArrowRight } from 'lucide-react';
 import { Reveal } from '../ui/Reveal';
+import { siteConfig } from '../../config/site';
 
-export const Contato = () => {
-    const [formData, setFormData] = useState({
-        nome: '',
-        email: '',
-        contato: '',
-        mensagem: '',
-        assunto: "Solicitação de Proposta - MIVLO"
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
+export const Contato = ({ type = 'contato' }) => {
+  const whatsappUrl = siteConfig.getWhatsAppLink(type);
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.id]: e.target.value });
-    };
+  return (
+    <section id="contato" className="py-20 lg:py-28 relative overflow-hidden bg-gradient-to-b from-[#100D18] via-[#08070D] to-[#08070D] text-white">
+      {/* Brilhos discretos violeta e roxo */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-[#6128C8]/15 blur-[150px] rounded-full pointer-events-none" />
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
+      <div className="container mx-auto px-6 max-w-3xl text-center relative z-10">
+        <Reveal>
+          <div className="flex flex-col items-center">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[10px] md:text-xs font-semibold tracking-widest uppercase bg-[#9557F5]/10 text-[#9557F5] border border-[#9557F5]/25 mb-5">
+              Vamos construir
+            </span>
 
-        sendEmail(formData)
-            .then(() => {
-                Toastify({
-                    text: "E-mail enviado com sucesso",
-                    duration: 4000,
-                    style: {
-                        background: "linear-gradient(45deg, #b06ab3, #4568dc)",
-                        color: "#ffffff"
-                    }
-                }).showToast();
-                
-                setFormData({
-                    nome: '',
-                    email: '',
-                    contato: '',
-                    mensagem: '',
-                    assunto: "Solicitação de Proposta - MIVLO"
-                });
-            })
-            .catch((error) => {
-                console.error("EmailJS error:", error);
-                Toastify({
-                    text: "Erro ao tentar enviar e-mail",
-                    duration: 4000,
-                    style: {
-                        background: "#b06ab3",
-                        color: "#ffffff"
-                    }
-                }).showToast();
-            })
-            .finally(() => {
-                setIsSubmitting(false);
-            });
-    };
+            <h2 className="fluid-h2 font-extrabold text-white mb-4 md:mb-6 tracking-tight">
+              Transforme sua ideia em uma <br className="hidden md:block" />
+              <span className="bg-gradient-to-r from-white via-[#B99AFF] to-[#9557F5] bg-clip-text text-transparent">
+                entrega profissional.
+              </span>
+            </h2>
 
-    return (
-        <section id="contato" className="py-16 lg:py-24 relative pb-32 md:pb-40">
-            <div className="container mx-auto px-6 max-w-4xl text-center">
-                <Reveal>
-                    <div className="mb-12 md:mb-16">
-                        <span className="text-[10px] md:text-xs font-semibold tracking-widest uppercase text-brand-amber mb-4 md:mb-6 block">Vamos construir</span>
-                        <h2 className="fluid-h2 font-extrabold text-white mb-4 md:mb-6">
-                            Transforme sua ideia em uma <br className="hidden md:block" /><span className="text-amber-gradient">entrega profissional.</span>
-                        </h2>
-                        <p className="text-brand-sand/80 max-w-2xl mx-auto font-light text-sm md:text-lg">
-                            Conte a sua necessidade. Voltamos com proposta modular em até 24 horas — Media, Tech, ou as duas frentes.
-                        </p>
-                    </div>
-                </Reveal>
+            <p className="text-[#B9B2C5] max-w-xl mx-auto font-light text-xs sm:text-sm md:text-base leading-relaxed mb-8 sm:mb-10">
+              Tem um projeto em mente, precisa de um novo site, landing page de alta conversão ou cobertura audiovisual de alto padrão? Fale diretamente comigo no WhatsApp para solicitar seu orçamento sob medida.
+            </p>
 
-                <Reveal delayClass="delay-100">
-                    <form onSubmit={handleSubmit} className="w-full text-left max-w-3xl mx-auto">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
-                            <div className="space-y-2">
-                                <label className="sr-only" htmlFor="nome">Como posso te chamar?</label>
-                                <input 
-                                    type="text" 
-                                    id="nome" 
-                                    value={formData.nome}
-                                    onChange={handleChange}
-                                    placeholder="Como posso te chamar?" 
-                                    className="w-full bg-brand-muted/30 border border-brand-border/60 rounded-2xl px-4 py-3 md:px-5 md:py-4 text-sm md:text-base text-white placeholder:text-white/40 focus:outline-none focus:border-brand-amber focus:ring-1 focus:ring-brand-amber transition-all shadow-inner" 
-                                    required 
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="sr-only" htmlFor="email">E-mail</label>
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    placeholder="E-mail" 
-                                    className="w-full bg-brand-muted/30 border border-brand-border/60 rounded-2xl px-4 py-3 md:px-5 md:py-4 text-sm md:text-base text-white placeholder:text-white/40 focus:outline-none focus:border-brand-amber focus:ring-1 focus:ring-brand-amber transition-all shadow-inner" 
-                                    required 
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="sr-only" htmlFor="contato">Telefone para contato</label>
-                                <input 
-                                    type="tel" 
-                                    id="contato" 
-                                    value={formData.contato}
-                                    onChange={handleChange}
-                                    placeholder="Telefone para contato" 
-                                    className="w-full bg-brand-muted/30 border border-brand-border/60 rounded-2xl px-4 py-3 md:px-5 md:py-4 text-sm md:text-base text-white placeholder:text-white/40 focus:outline-none focus:border-brand-amber focus:ring-1 focus:ring-brand-amber transition-all shadow-inner" 
-                                />
-                            </div>
-                        </div>
-                        <div className="mb-8 md:mb-10">
-                            <label className="sr-only" htmlFor="mensagem">Escopo do projeto e observações</label>
-                            <textarea 
-                                id="mensagem" 
-                                value={formData.mensagem}
-                                onChange={handleChange}
-                                rows="4" 
-                                placeholder="Escopo do projeto e observações" 
-                                className="w-full bg-brand-muted/30 border border-brand-border/60 rounded-2xl px-4 py-3 md:px-5 md:py-4 text-sm md:text-base text-white placeholder:text-white/40 focus:outline-none focus:border-brand-amber focus:ring-1 focus:ring-brand-amber transition-all resize-none shadow-inner" 
-                                required
-                            ></textarea>
-                        </div>
-                        <div className="text-center">
-                            <button 
-                                type="submit" 
-                                disabled={isSubmitting}
-                                className="btn-amber text-base md:text-lg w-full sm:w-auto px-10"
-                            >
-                                {isSubmitting ? "Enviando..." : "Solicitar proposta"}
-                                {!isSubmitting && <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-1" />}
-                            </button>
-                        </div>
-                    </form>
-                </Reveal>
-            </div>
-        </section>
-    );
+            {/* Botão Único Padronizado para o WhatsApp */}
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-purple text-xs sm:text-sm md:text-base font-bold px-7 sm:px-10 py-3.5 sm:py-4 rounded-full shadow-xl shadow-[#6128C8]/40 flex items-center justify-center gap-2.5 transition-all transform hover:scale-105 w-auto max-w-full"
+            >
+              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
+              <span>Solicitar Orçamento no WhatsApp</span>
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-0.5" />
+            </a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
 };

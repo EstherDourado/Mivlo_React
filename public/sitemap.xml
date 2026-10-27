@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Página Inicial / Home -->
+  <url>
+    <loc>https://estherdourado.github.io/Mivlo_React/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://estherdourado.github.io/Mivlo_React/img/esther.jpg</image:loc>
+      <image:title>Esther Dourado Batista - Fundadora MIVLO</image:title>
+      <image:caption>Esther Dourado Batista, fundadora da MIVLO, desenvolvedora web e filmmaker</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Seção Audiovisual -->
+  <url>
+    <loc>https://estherdourado.github.io/Mivlo_React/audiovisual</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Seção Desenvolvimento Web & Digital -->
+  <url>
+    <loc>https://estherdourado.github.io/Mivlo_React/desenvolvimento</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Portfólio: Don Ritter Barbearia -->
+  <url>
+    <loc>https://estherdourado.github.io/Mivlo_React/portfolio/donritter</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://estherdourado.github.io/Mivlo_React/img/Landingpages/donritter.png</image:loc>
+      <image:title>Don Ritter Barbearia - Landing Page &amp; Agendamento Online</image:title>
+    </image:image>
+  </url>
+
+  <!-- Portfólio: Mano Barba -->
+  <url>
+    <loc>https://estherdourado.github.io/Mivlo_React/portfolio/manobarba</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://estherdourado.github.io/Mivlo_React/img/Landingpages/manobarba.png</image:loc>
+      <image:title>Mano Barba Barbearia - Landing Page Institucional</image:title>
+    </image:image>
+  </url>
+
+  <!-- Portfólio: Merengue da Tati -->
+  <url>
+    <loc>https://estherdourado.github.io/Mivlo_React/portfolio/merengue</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://estherdourado.github.io/Mivlo_React/img/Landingpages/merengue.png</image:loc>
+      <image:title>Merengue da Tati - Catálogo Digital &amp; Cardápio Online</image:title>
+    </image:image>
+  </url>
+
+  <!-- Portfólio: LVS Joias Contemporâneas -->
+  <url>
+    <loc>https://estherdourado.github.io/Mivlo_React/portfolio/lvs</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://estherdourado.github.io/Mivlo_React/img/Landingpages/lvs.png</image:loc>
+      <image:title>LVS Joias Contemporâneas - E-commerce de Semijoias</image:title>
+    </image:image>
+  </url>
+
+  <!-- Portfólio: MW Cenografia -->
+  <url>
+    <loc>https://estherdourado.github.io/Mivlo_React/portfolio/mw-cenografia</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://estherdourado.github.io/Mivlo_React/img/Landingpages/cenografia.png</image:loc>
+      <image:title>MW Cenografia - Portfólio de Arquitetura Promocional</image:title>
+    </image:image>
+  </url>
+
+  <!-- Portfólio: Adere Fitas Adesivas - Cobertura Audiovisual -->
+  <url>
+    <loc>https://estherdourado.github.io/Mivlo_React/portfolio/adere-expo</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Portfólio: Irialmag Brasil - Cobertura Audiovisual -->
+  <url>
+    <loc>https://estherdourado.github.io/Mivlo_React/portfolio/irialmag-expo</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Portfólio: Supriled - Cobertura Audiovisual -->
+  <url>
+    <loc>https://estherdourado.github.io/Mivlo_React/portfolio/supriled-expo</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

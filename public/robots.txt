@@ -1,0 +1,57 @@
+# Robots.txt — MIVLO (https://estherdourado.github.io/Mivlo_React/)
+# Permissões de rastreamento e indexação para Google, Bing, mecanismos de busca e IA
+
+User-agent: *
+Allow: /
+Allow: /Mivlo_React/
+Allow: /Mivlo_React/audiovisual
+Allow: /Mivlo_React/desenvolvimento
+Allow: /Mivlo_React/portfolio/
+Allow: /Mivlo_React/img/
+Allow: /Mivlo_React/icons/
+Allow: /Mivlo_React/assets/
+
+# Mecanismos de busca e indexadores principais
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Rastreadores de redes sociais e compartilhamento (Open Graph / Cards)
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# Rasteadores de IA e sistemas de linguagem (respeitam diretivas públicas)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Referência absoluta ao sitemap canônico
+Sitemap: https://estherdourado.github.io/Mivlo_React/sitemap.xml

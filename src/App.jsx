@@ -7,6 +7,7 @@ import { FloatingWhatsApp } from './components/ui/FloatingWhatsApp';
 import { Home } from './pages/Home';
 import { Audiovisual } from './pages/Audiovisual';
 import { Desenvolvimento } from './pages/Desenvolvimento';
+import { ProjectDetail } from './pages/ProjectDetail';
 
 function App() {
   return (
@@ -14,23 +15,26 @@ function App() {
       {/* Reseta a rolagem da página para o topo nas mudanças de rota */}
       <ScrollToTop />
 
-      {/* Fundo com grade animada e orbs luminescentes característicos da MIVLO */}
-      <div className="fixed inset-0 pointer-events-none z-[-1] grid-bg grid-bg-mask opacity-60 animate-grid"></div>
-      <div className="fixed top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-brand-amber blur-[150px] opacity-30 pointer-events-none z-[-1] animate-float"></div>
-      <div 
-        className="fixed bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-brand-amber2 blur-[150px] opacity-20 pointer-events-none z-[-1] animate-float" 
-        style={{ animationDelay: '-3.5s' }}
-      ></div>
+      {/* Fundo com grade animada e orbs luminescentes contidos sem vazar */}
+      <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+        <div className="absolute inset-0 grid-bg grid-bg-mask opacity-40 animate-grid"></div>
+        <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-[#6128C8] blur-[160px] opacity-20 animate-float"></div>
+        <div 
+          className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-[#9557F5] blur-[160px] opacity-15 animate-float" 
+          style={{ animationDelay: '-3.5s' }}
+        ></div>
+      </div>
 
       {/* Header com Navegação Multipágina */}
       <Header />
       
       {/* Rotas Principais */}
-      <main className="min-h-screen">
+      <main className="min-h-screen w-full max-w-full overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/audiovisual" element={<Audiovisual />} />
           <Route path="/desenvolvimento" element={<Desenvolvimento />} />
+          <Route path="/portfolio/:id" element={<ProjectDetail />} />
           {/* Rota fallback direciona para Home */}
           <Route path="*" element={<Home />} />
         </Routes>

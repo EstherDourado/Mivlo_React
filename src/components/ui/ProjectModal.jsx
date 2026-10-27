@@ -30,28 +30,28 @@ export const ProjectModal = ({ project, onClose }) => {
   const whatsappUrl = siteConfig.getWhatsAppLink(isWeb ? 'desenvolvimento' : 'audiovisual');
 
   return (
-    <div 
+    <div
       className="fixed inset-0 z-[100] flex items-center justify-center p-3 md:p-6 overflow-y-auto bg-black/85 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
     >
-      <div 
-        className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto bg-[#180a30] border border-brand-border/80 rounded-3xl shadow-2xl text-left flex flex-col my-auto"
+      <div
+        className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto bg-[#100D18] border border-white/15 rounded-3xl shadow-2xl text-left flex flex-col my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header do Modal */}
-        <div className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 bg-[#180a30]/95 backdrop-blur-md border-b border-brand-border/60">
+        <div className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 bg-[#100D18]/95 backdrop-blur-md border-b border-white/10">
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 text-[11px] font-mono font-bold uppercase rounded-full bg-brand-amber/20 text-brand-amber border border-brand-amber/30">
+            <span className="px-3 py-1 text-[11px] font-mono font-bold uppercase rounded-full bg-[#6128C8]/20 text-[#B99AFF] border border-[#6128C8]/30">
               {project.category}
             </span>
-            <span className="text-xs text-brand-sand/60 hidden sm:inline">
+            <span className="text-xs text-[#B9B2C5]/60 hidden sm:inline">
               {project.client} • {project.year}
             </span>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 text-brand-sand/70 hover:text-white rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+            className="p-2 text-[#B9B2C5]/70 hover:text-white rounded-full bg-white/5 hover:bg-white/10 transition-colors"
             aria-label="Fechar prévia"
           >
             <X className="w-5 h-5" />
@@ -79,7 +79,7 @@ export const ProjectModal = ({ project, onClose }) => {
                 </a>
               )}
             </div>
-            <p className="text-brand-sand/80 text-sm md:text-base leading-relaxed">
+            <p className="text-[#B9B2C5] text-sm md:text-base leading-relaxed">
               {project.summary}
             </p>
           </div>
@@ -87,30 +87,30 @@ export const ProjectModal = ({ project, onClose }) => {
           {/* PREVIEW VISUAL: Mockup de Navegador para Web OU Frame de Cinema para Audiovisual */}
           {isWeb ? (
             /* Mockup de Navegador para Projetos Web */
-            <div className="rounded-2xl border border-brand-border/80 overflow-hidden bg-[#0d041c] shadow-2xl">
+            <div className="rounded-2xl border border-white/10 overflow-hidden bg-[#08070D] shadow-2xl">
               {/* Barra do Navegador */}
-              <div className="h-10 bg-[#14062a] border-b border-brand-border/60 flex items-center px-4 gap-3">
+              <div className="h-10 bg-[#160E24] border-b border-white/10 flex items-center px-4 gap-3">
                 <div className="flex items-center gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-rose-500/80"></div>
                   <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
                   <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
                 </div>
                 {/* Fake / Real URL Bar */}
-                <a 
-                  href={project.githubUrl || "#"} 
-                  target="_blank" 
+                <a
+                  href={project.githubUrl || "#"}
+                  target="_blank"
                   rel="noreferrer"
-                  className="flex-1 max-w-md mx-auto bg-black/40 hover:bg-black/60 transition-colors border border-white/5 rounded-lg px-3 py-1 flex items-center justify-between text-xs text-brand-sand/70 font-mono"
+                  className="flex-1 max-w-md mx-auto bg-black/40 hover:bg-black/60 transition-colors border border-white/5 rounded-lg px-3 py-1 flex items-center justify-between text-xs text-[#B9B2C5] font-mono"
                 >
                   <div className="flex items-center gap-2 truncate">
-                    <Globe className="w-3.5 h-3.5 text-brand-amber flex-shrink-0" />
+                    <Globe className="w-3.5 h-3.5 text-[#9557F5] flex-shrink-0" />
                     <span className="truncate">{project.githubUrl ? project.githubUrl.replace('https://', '') : `https://${project.id}.mivlo.com.br`}</span>
                   </div>
                   <ExternalLink className="w-3 h-3 opacity-60 ml-2 flex-shrink-0" />
                 </a>
               </div>
 
-              {/* Imagem / Banner do Projeto Web */}
+              {/* Imagem / Banner do Projeto Web em cores originais */}
               <div className="relative aspect-video max-h-[400px] w-full overflow-hidden bg-black/40 flex items-center justify-center p-4">
                 <img
                   src={project.gallery ? project.gallery[activeMediaIndex] : project.coverImage}
@@ -121,15 +121,14 @@ export const ProjectModal = ({ project, onClose }) => {
 
               {/* Miniaturas de Telas se houver galeria */}
               {project.gallery && project.gallery.length > 1 && (
-                <div className="p-3 bg-[#120524] border-t border-brand-border/40 flex items-center gap-2 overflow-x-auto">
-                  <span className="text-[11px] font-mono text-brand-sand/50 mr-2 uppercase">Vistas:</span>
+                <div className="p-3 bg-[#100D18] border-t border-white/10 flex items-center gap-2 overflow-x-auto">
+                  <span className="text-[11px] font-mono text-[#B9B2C5]/50 mr-2 uppercase">Vistas:</span>
                   {project.gallery.map((imgUrl, i) => (
                     <button
                       key={i}
                       onClick={() => setActiveMediaIndex(i)}
-                      className={`relative w-16 h-10 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 bg-black/60 ${
-                        activeMediaIndex === i ? 'border-brand-amber scale-105 shadow-md' : 'border-transparent opacity-60 hover:opacity-100'
-                      }`}
+                      className={`relative w-16 h-10 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 bg-black/60 ${activeMediaIndex === i ? 'border-[#6128C8] scale-105 shadow-md' : 'border-transparent opacity-70 hover:opacity-100'
+                        }`}
                     >
                       <img src={imgUrl} alt={`Tela ${i + 1}`} className="w-full h-full object-contain" />
                     </button>
@@ -138,14 +137,14 @@ export const ProjectModal = ({ project, onClose }) => {
               )}
             </div>
           ) : (
-            /* Visualizador Audiovisual / Frame de Cinema com Foto Ativa */
-            <div className="rounded-2xl border border-brand-border/80 overflow-hidden bg-[#0d041c] shadow-2xl relative">
+            /* Visualizador Audiovisual / Frame de Cinema com Foto Ativa em cores originais */
+            <div className="rounded-2xl border border-white/10 overflow-hidden bg-[#08070D] shadow-2xl relative">
               <div className="relative aspect-video max-h-[440px] w-full overflow-hidden bg-black flex items-center justify-center">
                 {/* Viewfinder brackets nos cantos */}
-                <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-brand-amber/80 z-10 pointer-events-none"></div>
-                <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-brand-amber/80 z-10 pointer-events-none"></div>
-                <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-brand-amber/80 z-10 pointer-events-none"></div>
-                <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-brand-amber/80 z-10 pointer-events-none"></div>
+                <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-[#9557F5]/80 z-10 pointer-events-none"></div>
+                <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-[#9557F5]/80 z-10 pointer-events-none"></div>
+                <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-[#9557F5]/80 z-10 pointer-events-none"></div>
+                <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-[#9557F5]/80 z-10 pointer-events-none"></div>
 
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 bg-black/70 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/10 flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></div>
@@ -161,15 +160,15 @@ export const ProjectModal = ({ project, onClose }) => {
                 />
               </div>
 
-              {/* Grade de 6 Miniaturas do Evento */}
+              {/* Grade de Miniaturas do Evento */}
               {project.gallery && (
-                <div className="p-4 bg-[#120524] border-t border-brand-border/40">
+                <div className="p-4 bg-[#100D18] border-t border-white/10">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono font-semibold text-brand-amber flex items-center gap-1.5 uppercase">
+                    <span className="text-xs font-mono font-semibold text-[#9557F5] flex items-center gap-1.5 uppercase">
                       <Images className="w-3.5 h-3.5" />
                       Galeria do Evento (6 Fotografias)
                     </span>
-                    <span className="text-[11px] text-brand-sand/50 font-mono">
+                    <span className="text-[11px] text-[#B9B2C5]/50 font-mono">
                       Clique em qualquer foto para ampliar
                     </span>
                   </div>
@@ -180,8 +179,8 @@ export const ProjectModal = ({ project, onClose }) => {
                         onClick={() => setActiveMediaIndex(i)}
                         className={`relative aspect-video rounded-lg overflow-hidden border-2 transition-all ${
                           activeMediaIndex === i
-                            ? 'border-brand-amber scale-105 shadow-lg shadow-brand-amber/40 ring-2 ring-brand-amber/20'
-                            : 'border-transparent opacity-60 hover:opacity-100 hover:scale-102'
+                            ? 'border-[#6128C8] scale-105 shadow-lg shadow-[#6128C8]/40 ring-2 ring-[#6128C8]/20'
+                            : 'border-transparent opacity-70 hover:opacity-100 hover:scale-102'
                         }`}
                         aria-label={`Ver foto ${i + 1}`}
                       >
@@ -197,24 +196,18 @@ export const ProjectModal = ({ project, onClose }) => {
             </div>
           )}
 
-          {/* Descrição Detalhada & Métricas */}
+          {/* Tecnologias & Métricas (Seção Sobre o Projeto removida conforme solicitado) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-2 space-y-4">
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-amber">
-                Sobre o Projeto
-              </h4>
-              <p className="text-sm md:text-base text-brand-sand/80 font-light leading-relaxed">
-                {project.description}
-              </p>
 
               {/* Tecnologias / Equipamentos Utilizados */}
               <div>
-                <h5 className="text-xs font-semibold uppercase tracking-wider text-brand-sand/60 mb-2">
+                <h5 className="text-xs font-semibold uppercase tracking-wider text-[#B9B2C5]/60 mb-2">
                   {isWeb ? 'Tecnologias & Ferramentas' : 'Equipamento & Pós-Produção'}
                 </h5>
                 <div className="flex flex-wrap gap-2">
                   {project.techs.map((tech, i) => (
-                    <span 
+                    <span
                       key={i}
                       className="px-2.5 py-1 text-xs rounded-lg bg-white/5 border border-white/10 text-white font-mono"
                     >
@@ -226,16 +219,16 @@ export const ProjectModal = ({ project, onClose }) => {
             </div>
 
             {/* Resultados / Métricas */}
-            <div className="glass-panel p-5 rounded-2xl bg-brand-muted/30 border border-brand-border/60 flex flex-col justify-between">
+            <div className="glass-card-dark p-5 rounded-2xl bg-[#100D18]/90 border border-white/10 flex flex-col justify-between">
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3 flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   Destaques & Entregáveis
                 </h4>
-                <ul className="space-y-2.5 text-xs text-brand-sand/80">
+                <ul className="space-y-2.5 text-xs text-[#B9B2C5]">
                   {project.metrics.map((metric, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-amber mt-1.5 flex-shrink-0"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#9557F5] mt-1.5 flex-shrink-0"></span>
                       <span>{metric}</span>
                     </li>
                   ))}
@@ -259,7 +252,7 @@ export const ProjectModal = ({ project, onClose }) => {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-amber w-full text-xs py-2.5 flex items-center justify-center gap-2"
+                  className="btn-purple w-full text-xs py-2.5 flex items-center justify-center gap-2"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
                   Quero um projeto assim

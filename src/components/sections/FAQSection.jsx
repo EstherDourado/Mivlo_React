@@ -24,26 +24,29 @@ export const FAQSection = ({ type = "general", title = "Perguntas Frequentes", s
   }
 
   return (
-    <section id="faq" className="py-20 lg:py-28 relative">
-      <div className="container mx-auto px-6 max-w-4xl">
+    <section id="faq" className="py-20 lg:py-28 relative overflow-hidden w-full max-w-full bg-gradient-to-b from-[#08070D] via-[#100D18] to-[#08070D] text-white">
+      {/* Luz ambiente sutil */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[#6128C8]/10 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-6 max-w-4xl relative z-10">
         <Reveal>
           <div className="text-center mb-14">
-            <span className="text-[10px] md:text-xs font-semibold tracking-widest uppercase text-brand-amber mb-3 block">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] md:text-xs font-semibold tracking-widest uppercase bg-[#9557F5]/10 text-[#9557F5] border border-[#9557F5]/25 mb-4">
               Dúvidas & Clareza
             </span>
-            <h2 className="fluid-h2 font-extrabold text-white mb-4">
+            <h2 className="fluid-h2 font-extrabold text-white mb-4 tracking-tight">
               {title}
             </h2>
-            <p className="text-sm md:text-base text-brand-sand/80 font-light leading-relaxed">
+            <p className="text-sm md:text-base text-[#B9B2C5] font-light leading-relaxed max-w-2xl mx-auto">
               {subtitle}
             </p>
 
             {type === "general" && (
-              <div className="inline-flex items-center p-1 rounded-full bg-brand-muted/40 border border-brand-border/60 mt-6">
+              <div className="inline-flex items-center p-1 rounded-full bg-[#100D18] border border-[#393340] mt-6 shadow-lg shadow-black/40">
                 <button
                   onClick={() => setActiveTab("all")}
                   className={`px-5 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                    activeTab === "all" ? "bg-brand-amber text-white shadow-md" : "text-brand-sand/70 hover:text-white"
+                    activeTab === "all" ? "bg-[#6128C8] text-white shadow-md shadow-[#6128C8]/40" : "text-[#B9B2C5] hover:text-white"
                   }`}
                 >
                   Principais
@@ -51,7 +54,7 @@ export const FAQSection = ({ type = "general", title = "Perguntas Frequentes", s
                 <button
                   onClick={() => setActiveTab("audiovisual")}
                   className={`px-5 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                    activeTab === "audiovisual" ? "bg-brand-amber text-white shadow-md" : "text-brand-sand/70 hover:text-white"
+                    activeTab === "audiovisual" ? "bg-[#6128C8] text-white shadow-md shadow-[#6128C8]/40" : "text-[#B9B2C5] hover:text-white"
                   }`}
                 >
                   Audiovisual
@@ -59,7 +62,7 @@ export const FAQSection = ({ type = "general", title = "Perguntas Frequentes", s
                 <button
                   onClick={() => setActiveTab("desenvolvimento")}
                   className={`px-5 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                    activeTab === "desenvolvimento" ? "bg-brand-amber text-white shadow-md" : "text-brand-sand/70 hover:text-white"
+                    activeTab === "desenvolvimento" ? "bg-[#6128C8] text-white shadow-md shadow-[#6128C8]/40" : "text-[#B9B2C5] hover:text-white"
                   }`}
                 >
                   Desenvolvimento

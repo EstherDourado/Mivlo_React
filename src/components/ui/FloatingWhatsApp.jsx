@@ -26,13 +26,16 @@ export const FloatingWhatsApp = () => {
   }, [location.pathname]);
 
   return (
-    <aside aria-label="Atendimento rápido via WhatsApp" className="fixed bottom-6 right-6 z-50 flex items-center flex-col sm:flex-row-reverse gap-3 pointer-events-auto">
+    <aside 
+      aria-label="Atendimento rápido via WhatsApp" 
+      className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex items-end sm:items-center flex-col sm:flex-row-reverse gap-3 pointer-events-auto max-w-[calc(100vw-2rem)]"
+    >
       {/* Botão Principal do WhatsApp */}
       <a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-emerald-600 to-green-500 text-white shadow-[0_10px_30px_rgba(16,185,129,0.5)] hover:shadow-[0_15px_40px_rgba(16,185,129,0.7)] transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-emerald-400/40"
+        className="group relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-emerald-600 to-green-500 text-white shadow-[0_10px_30px_rgba(16,185,129,0.5)] hover:shadow-[0_15px_40px_rgba(16,185,129,0.7)] transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-emerald-400/40 flex-shrink-0"
         aria-label="Fale comigo pelo WhatsApp"
       >
         <span className="absolute -inset-1 rounded-full bg-emerald-500 opacity-40 animate-ping pointer-events-none"></span>
@@ -41,10 +44,10 @@ export const FloatingWhatsApp = () => {
 
       {/* Cartão de Mensagem Contextual / Tooltip */}
       {showTooltip && (
-        <div className="relative glass-panel bg-brand-graphite/95 border border-brand-border/80 px-4 py-3 rounded-2xl shadow-2xl max-w-[260px] animate-float sm:animate-none">
+        <div className="relative glass-card-dark bg-[#100D18]/95 border border-white/10 px-4 py-3 rounded-2xl shadow-2xl w-[260px] max-w-[calc(100vw-5rem)] animate-float sm:animate-none">
           <button
             onClick={() => setShowTooltip(false)}
-            className="absolute top-2 right-2 text-brand-sand/50 hover:text-white p-1"
+            className="absolute top-2 right-2 text-[#B9B2C5]/50 hover:text-white p-1"
             aria-label="Fechar aviso"
           >
             <X className="w-3.5 h-3.5" />
@@ -66,7 +69,7 @@ export const FloatingWhatsApp = () => {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[11px] font-semibold text-brand-amber hover:text-white flex items-center gap-1 transition-colors"
+            className="text-[11px] font-semibold text-[#9557F5] hover:text-white flex items-center gap-1 transition-colors"
           >
             Fale comigo pelo WhatsApp →
           </a>

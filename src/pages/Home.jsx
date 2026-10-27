@@ -1,4 +1,7 @@
 import React from 'react';
+import { SEO } from '../components/seo/SEO';
+import { getOrganizationSchema, getWebSiteSchema, getFAQSchema } from '../utils/schema';
+import { siteConfig } from '../config/site';
 import { Hero } from '../components/sections/Hero';
 import { Marquee } from '../components/sections/Marquee';
 import { AboutEsther } from '../components/sections/AboutEsther';
@@ -10,8 +13,29 @@ import { FAQSection } from '../components/sections/FAQSection';
 import { Contato } from '../components/sections/Contato';
 
 export const Home = () => {
+  const homeSchemas = [
+    getWebSiteSchema(),
+    getOrganizationSchema(),
+    /* FAQ Schema desativado temporariamente
+    getFAQSchema([
+      siteConfig.faqDesenvolvimento[1],
+      siteConfig.faqAudiovisual[0],
+      siteConfig.faqDesenvolvimento[3],
+      siteConfig.faqAudiovisual[1]
+    ])
+    */
+  ];
+
   return (
     <>
+      <SEO
+        title="MIVLO | Audiovisual, Fotografia, Vídeo e Desenvolvimento Web"
+        description="A MIVLO une desenvolvimento digital de alta performance e produção audiovisual estratégica. Criação de landing pages, sistemas web sob medida, fotografia corporativa e cobertura de feiras e eventos."
+        keywords="MIVLO, audiovisual São Paulo, desenvolvimento web, criação de sites, landing pages de alta conversão, fotografia de estandes, videomaker para feiras, cobertura de eventos, Esther Dourado Batista"
+        canonical={`${siteConfig.siteUrl}/`}
+        schema={homeSchemas}
+      />
+
       {/* Primeira dobra de alto impacto */}
       <Hero />
 
@@ -41,12 +65,13 @@ export const Home = () => {
         subtitle="Rigor de engenharia e olhar cinematográfico para garantir entregas com prazo e excelência."
       />
 
-      {/* FAQ / Anulação de Objeções Geral */}
+      {/* FAQ / Anulação de Objeções Geral (Desativado temporariamente)
       <FAQSection
         type="general"
         title="Dúvidas Frequentes"
         subtitle="Respostas claras para as principais perguntas sobre contratação, prazos e escopo."
       />
+      */}
 
       {/* Contato com integração EmailJS e WhatsApp */}
       <Contato />

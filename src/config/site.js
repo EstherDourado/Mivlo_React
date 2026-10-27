@@ -1,20 +1,25 @@
-const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-export const asset = (path) => `${base}${path.startsWith('/') ? path.slice(1) : path}`;
+import { asset } from '../utils/asset';
+import { projectsData } from '../data/projectsData';
+export { asset };
 
 export const siteConfig = {
   name: "MIVLO",
+  siteUrl: "https://estherdourado.github.io/Mivlo_React",
   tagline: "Sua marca em tela. Sua marca em código.",
-  description: "Desenvolvimento digital e produção audiovisual para transformar ideias, projetos e experiências em soluções que geram presença.",
+  description: "A MIVLO une desenvolvimento digital de alta performance e produção audiovisual estratégica. Criação de landing pages, sistemas web sob medida, fotografia corporativa e cobertura de feiras e eventos.",
   creator: "Esther Dourado Batista",
   roles: "Fotógrafa, Filmmaker & Desenvolvedora Full Stack",
   contact: {
     phoneDisplay: "(11) 95399-9505",
     phoneRaw: "5511953999505",
-    email: "mivloaudiovisual@gmail.com",
+    email: "contato@mivlo.com.br",
+    secondaryEmail: "mivloaudiovisual@gmail.com",
     instagram: "https://instagram.com/_mivlo",
     instagramHandle: "@_mivlo",
+    github: "https://github.com/EstherDourado",
     location: "São Paulo, SP — Atendimento e cobertura nacional",
   },
+  defaultOgImage: "https://estherdourado.github.io/Mivlo_React/img/esther.jpg",
   whatsappMessages: {
     general: "Olá, Esther! Gostaria de conversar sobre as soluções da MIVLO.",
     audiovisual: "Olá, Esther! Vi os serviços audiovisuais da MIVLO e gostaria de receber mais informações.",
@@ -31,7 +36,7 @@ export const siteConfig = {
     {
       id: "registro",
       name: "REGISTRO",
-      price: "1.250",
+      price: "Sob Orçamento",
       description: "Para empresas que precisam de material profissional e pontual para divulgar seu projeto ou estande.",
       isFeatured: false,
       badge: "Entrada Profissional",
@@ -47,7 +52,7 @@ export const siteConfig = {
     {
       id: "conteudo",
       name: "CONTEÚDO",
-      price: "1.750",
+      price: "Sob Orçamento",
       description: "Para empresas que querem transformar a presença e o projeto em conteúdo dinâmico para redes sociais.",
       isFeatured: false,
       badge: "Engajamento & Redes",
@@ -64,7 +69,7 @@ export const siteConfig = {
     {
       id: "historia",
       name: "HISTÓRIA",
-      price: "2.500",
+      price: "Sob Orçamento",
       description: "Para empresas que desejam registrar o projeto completo, do início da estrutura até a experiência do público.",
       isFeatured: true,
       badge: "MAIS COMPLETO",
@@ -84,52 +89,52 @@ export const siteConfig = {
     },
   ],
 
-  // Serviços Avulsos Audiovisual (Baseados em pesquisa de mercado Brasil 2026)
+  // Serviços Avulsos Audiovisual (Sob Orçamento)
   audiovisualStandalone: [
     {
       title: "Ensaio Fotográfico Corporativo",
       description: "Retratos profissionais para diretoria, equipe, crachás e posicionamento no LinkedIn.",
-      startingAt: "R$ 750",
-      details: "Sessão orientada de 1h30 a 2h, tratamento fino de pele e entrega de 15 a 25 fotos selecionadas.",
+      startingAt: "Sob Orçamento",
+      details: "Sessão orientada de 1h30 a 2h, tratamento fino de pele e entrega de fotos selecionadas.",
     },
     {
       title: "Cobertura Fotográfica de Eventos",
       description: "Registro de palestras, feiras, premiações e estandes por hora ou período.",
-      startingAt: "R$ 900",
-      details: "Período de 4 horas de captação contínua com tratamento ágil de todas as imagens aprovadas.",
+      startingAt: "Sob Orçamento",
+      details: "Período de captação contínua com tratamento ágil de todas as imagens aprovadas.",
     },
     {
       title: "Diária de Videomaker / Captação",
       description: "Captação técnica em cinema 4K com iluminação móvel e áudio profissional sem fio.",
-      startingAt: "R$ 1.400",
-      details: "Até 8 horas de gravação no local com equipamento de alta gama e olhar cinematográfico.",
+      startingAt: "Sob Orçamento",
+      details: "Gravação no local com equipamento de alta gama e olhar cinematográfico.",
     },
     {
       title: "Storymaker / Cobertura em Tempo Real",
       description: "Criação, captação e postagem de stories e cortes dinâmicos durante o próprio evento.",
-      startingAt: "R$ 650",
+      startingAt: "Sob Orçamento",
       details: "Agilidade para manter as redes sociais ativas com materiais de alto padrão durante o evento.",
     },
     {
       title: "Vídeo Institucional / Aftermovie",
       description: "Filme narrativo de 1 a 3 minutos com trilha sonora licenciada, color grading e roteiro.",
-      startingAt: "R$ 2.800",
+      startingAt: "Sob Orçamento",
       details: "Ideal para apresentação de empresas, portfólio de arquitetura ou resumo de grandes feiras.",
     },
     {
       title: "Edição de Vídeo Avulsa",
       description: "Pós-produção de materiais pré-gravados: cortes dinâmicos, sonorização e legendagem.",
-      startingAt: "R$ 450",
-      details: "Por vídeo de até 90 segundos com 2 rodadas de ajustes inclusas.",
+      startingAt: "Sob Orçamento",
+      details: "Pós-produção personalizada com rodadas de ajustes inclusas.",
     },
   ],
 
-  // Pacotes de Desenvolvimento Web
+  // Pacotes de Desenvolvimento Web (Sob Orçamento)
   devServices: [
     {
       id: "landing-page",
       name: "Landing Page Personalizada",
-      startingAt: "R$ 1.500",
+      startingAt: "Sob Orçamento",
       type: "fixed-starting",
       description: "Páginas exclusivas com alta taxa de conversão, pensadas estrategicamente para transformar visitantes em clientes reais.",
       highlights: [
@@ -148,7 +153,7 @@ export const siteConfig = {
     {
       id: "site-institucional",
       name: "Site Institucional Completo",
-      startingAt: "R$ 3.500",
+      startingAt: "Sob Orçamento",
       type: "fixed-starting",
       description: "Presença digital sólida e moderna com múltiplas páginas para apresentar sua empresa, serviços, cases e diferenciais com autoridade.",
       highlights: [
@@ -184,13 +189,13 @@ export const siteConfig = {
     },
   ],
 
-  // Planos de Manutenção e Hospedagem Recorrente (Pesquisa Mercado 2026)
+  // Planos de Manutenção e Hospedagem Recorrente (Sob Orçamento)
   maintenancePlans: [
     {
       id: "essencial",
       name: "ESSENCIAL",
-      price: "149",
-      billing: "/mês",
+      price: "Sob Orçamento",
+      billing: "",
       description: "Para empresas que necessitam de estabilidade, segurança e garantia de que o site permanecerá rápido e online.",
       features: [
         "Hospedagem em nuvem de alta velocidade inclusa",
@@ -205,14 +210,14 @@ export const siteConfig = {
     {
       id: "profissional",
       name: "PROFISSIONAL",
-      price: "289",
-      billing: "/mês",
+      price: "Sob Orçamento",
+      billing: "",
       isPopular: true,
       description: "Para empresas que atualizam informações com frequência e exigem suporte prioritário com tempo de horas dedicadas.",
       features: [
         "Tudo do plano Essencial",
         "Backups automáticos diários com restauração rápida",
-        "Até 3 horas mensais inclusas para alterações de conteúdo ou design",
+        "Horas mensais inclusas para alterações de conteúdo ou design",
         "Otimização contínua de performance e velocidade",
         "Monitoramento avançado de segurança contra ameaças",
         "Suporte prioritário com SLA de resposta reduzido",
@@ -222,13 +227,13 @@ export const siteConfig = {
     {
       id: "performance",
       name: "PERFORMANCE & ESCALA",
-      price: "549",
-      billing: "/mês",
+      price: "Sob Orçamento",
+      billing: "",
       description: "Para sistemas web críticos, e-commerces e plataformas de alto tráfego que não podem parar nem perder dados.",
       features: [
         "Tudo do plano Profissional",
         "Ambiente dedicado em nuvem com alta redundância",
-        "Até 8 horas mensais inclusas de desenvolvimento e ajustes",
+        "Horas mensais inclusas de desenvolvimento e ajustes",
         "Monitoramento 24/7 com alertas em tempo real",
         "Gestão e otimização de banco de dados",
         "Relatório mensal consolidado de métricas e acessos",
@@ -239,129 +244,7 @@ export const siteConfig = {
   ],
 
   // Portfólio com Projetos Reais de Desenvolvimento e Eventos Audiovisuais
-  portfolio: [
-    // --- DESENVOLVIMENTO WEB ---
-    {
-      id: "donritter",
-      title: "Don Ritter — Pizzaria Artesanal & Delivery",
-      category: "Tecnologia",
-      subCategory: "Web",
-      tags: ["Tecnologia", "Web", "Landing Page", "Gastronomia"],
-      summary: "Landing page gastronômica de alta conversão para pizzaria artesanal com cardápio digital estruturado e pedidos rápidos via WhatsApp.",
-      coverImage: asset("img/projects/donritter-banner.png"),
-      client: "Don Ritter Pizzaria (Cascavel/PR)",
-      year: "2026",
-      type: "web",
-      techs: ["HTML5", "Tailwind CSS", "JavaScript", "Phosphor Icons", "WhatsApp API", "UI/UX"],
-      description: "Desenvolvimento de landing page de alta conversão para gastronomia e delivery artesanal em Cascavel/PR. Desenvolvida com paleta dark warm (#16110f, #e65c00), tipografia Bebas Neue + Inter, cardápio interativo com categorias, seção de rodízio e botão direto de pedidos no WhatsApp.",
-      metrics: ["Fluxo de pedidos direto no WhatsApp", "Experiência mobile first para delivery", "Código limpo e carregamento instantâneo"],
-      githubUrl: "https://github.com/EstherDourado/DONRITTER",
-      liveUrl: "https://github.com/EstherDourado/DONRITTER",
-      gallery: [
-        asset("img/projects/donritter-banner.png"),
-        asset("img/projects/donritter-logo.png")
-      ]
-    },
-    {
-      id: "mw-cenografia",
-      title: "MW Montagem de Estandes & Cenografia Promocional",
-      category: "Tecnologia",
-      subCategory: "Web",
-      tags: ["Tecnologia", "Web", "Landing Page", "3D / Three.js"],
-      summary: "Landing page corporativa B2B para empresa de montagem de estandes e arquitetura promocional com elementos 3D interativos em Three.js.",
-      coverImage: asset("img/projects/mw-preview.jpg"),
-      client: "MW Cenografia & Estandes",
-      year: "2026",
-      type: "web",
-      techs: ["HTML5", "Tailwind CSS", "Three.js 3D", "JavaScript", "Poppins", "SEO B2B"],
-      description: "Landing page institucional para empresa de cenografia e montagem de estandes em feiras e congressos. Conta com renderização 3D interativa em Three.js, apresentação de estandes executados e canal de captação de marcas expositoras.",
-      metrics: ["Renderização 3D interativa com Three.js", "Arquitetura otimizada para geração de leads B2B", "Paleta de cores sofisticada azul e dourado"],
-      githubUrl: "https://github.com/EstherDourado/MW_Landingpage",
-      liveUrl: "https://github.com/EstherDourado/MW_Landingpage",
-      gallery: [
-        asset("img/projects/mw-preview.jpg"),
-        asset("img/Adere/20260803_101508.jpg"),
-        asset("img/Irialmag/20260704_084835.jpg")
-      ]
-    },
-
-    // --- AUDIOVISUAL / EVENTOS (PASTAS COM 6 FOTOS REAIS CADA) ---
-    {
-      id: "adere-expo",
-      title: "Adere — Cobertura de Estande & Arquitetura Promocional",
-      category: "Audiovisual",
-      subCategory: "Fotografia",
-      tags: ["Audiovisual", "Fotografia", "Estandes"],
-      summary: "Cobertura fotográfica técnica e imersiva do estande da Adere, destacando iluminação cenográfica, acabamentos e fluxo de público.",
-      coverImage: asset("img/Adere/20260803_101508.jpg"),
-      client: "Adere Fitas Adesivas",
-      year: "2026",
-      type: "audiovisual",
-      eventFolder: "Adere",
-      photoCount: 6,
-      techs: ["Fotografia Técnica", "Lightroom Classic", "Composição Arquitetônica", "4K UHD"],
-      description: "Registro fotográfico detalhado e completo do estande da Adere. Documentamos os ângulos amplos da estrutura, detalhes de marcenaria, iluminação planejada, exposição dos produtos e a presença dinâmica de visitantes e montadores.",
-      metrics: ["Grade completa com 6 fotografias de alta resolução", "Tratamento de cor e iluminação calibrado", "Acervo corporativo para comunicação e vendas"],
-      gallery: [
-        asset("img/Adere/20260803_100903.jpg"),
-        asset("img/Adere/20260803_101256.jpg"),
-        asset("img/Adere/20260803_101508.jpg"),
-        asset("img/Adere/20260803_102842.jpg"),
-        asset("img/Adere/20260803_102902.jpg"),
-        asset("img/Adere/20260803_102959.jpg")
-      ]
-    },
-    {
-      id: "irialmag-expo",
-      title: "Irialmag — Presença Corporativa & Estrutura em Feira",
-      category: "Audiovisual",
-      subCategory: "Fotografia",
-      tags: ["Audiovisual", "Fotografia", "Eventos"],
-      summary: "Registro fotográfico minucioso capturando os detalhes estruturais, sinalização e a dinâmica do estande da Irialmag.",
-      coverImage: asset("img/Irialmag/20260704_084835.jpg"),
-      client: "Irialmag Indústria",
-      year: "2026",
-      type: "audiovisual",
-      eventFolder: "Irialmag",
-      photoCount: 6,
-      techs: ["Fotografia Corporativa", "Linhas Retas & Perspectiva", "Color Grading", "4K UHD"],
-      description: "Cobertura fotográfica da presença da Irialmag no pavilhão de feiras. O foco do ensaio foi valorizar o design do espaço, testeiras luminosas, mobiliário corporativo e o fluxo de reuniões e negócios no estande.",
-      metrics: ["Grade completa com 6 fotografias em alta definição", "Destaque de branding e sinalização de marca", "Banco de imagens para catálogo institucional"],
-      gallery: [
-        asset("img/Irialmag/20260704_084835.jpg"),
-        asset("img/Irialmag/20260704_085022.jpg"),
-        asset("img/Irialmag/20260704_085100.jpg"),
-        asset("img/Irialmag/20260704_085512.jpg"),
-        asset("img/Irialmag/20260704_091201(0).jpg"),
-        asset("img/Irialmag/20260704_094630.jpg")
-      ]
-    },
-    {
-      id: "supriled-expo",
-      title: "Supriled — Iluminação de LED & Estande Tecnológico",
-      category: "Audiovisual",
-      subCategory: "Fotografia",
-      tags: ["Audiovisual", "Fotografia", "Estandes"],
-      summary: "Captação fotográfica cinematográfica da Supriled, enfatizando a fidelidade de iluminação dos LEDs e arquitetura moderna do estande.",
-      coverImage: asset("img/Supriled/20260818_083714.jpg"),
-      client: "Supriled Iluminação",
-      year: "2026",
-      type: "audiovisual",
-      eventFolder: "Supriled",
-      photoCount: 6,
-      techs: ["Fotometria de LED", "Fotografia Indoor / Noturna", "HDR", "Pós-Produção Fina"],
-      description: "Cobertura fotográfica de alta precisão técnica para capturar os módulos e fitas de LED da Supriled com equilíbrio perfeito de temperatura de cor e exposição. Destacamos a ambientação imersiva do estande e a atração de visitantes.",
-      metrics: ["Grade completa com 6 fotografias em alta resolução calibradas", "Calibração precisa de luzes e cores de LED", "Material de alto impacto para catálogo e Instagram"],
-      gallery: [
-        asset("img/Supriled/20260818_074058.jpg"),
-        asset("img/Supriled/20260818_074155.jpg"),
-        asset("img/Supriled/20260818_083714.jpg"),
-        asset("img/Supriled/20260818_083737.jpg"),
-        asset("img/Supriled/20260818_083759.jpg"),
-        asset("img/Supriled/20260818_085824.jpg")
-      ]
-    }
-  ],
+  portfolio: projectsData,
 
   // FAQ Audiovisual
   faqAudiovisual: [
@@ -403,7 +286,7 @@ export const siteConfig = {
     },
     {
       q: "Existe mensalidade obrigatória após o desenvolvimento?",
-      a: "Não é obrigatório. Após a entrega e publicação do projeto, o código é 100% seu. Porém, recomendamos fortemente um dos nossos planos mensais de manutenção (a partir de R$ 149/mês) para garantir hospedagem ultra-rápida, certificado SSL, backups automáticos, segurança e suporte contínuo.",
+      a: "Não é obrigatório. Após a entrega e publicação do projeto, o código é 100% seu. Porém, recomendamos fortemente nossos planos de sustentação e manutenção técnica sob medida para garantir hospedagem ultra-rápida, certificado SSL, backups automáticos, segurança e suporte contínuo.",
     },
     {
       q: "Posso solicitar alterações ou melhorias depois que o site for publicado?",
